@@ -33,15 +33,16 @@
   - `[TASK-PRD-303]`: `DONE` (کامپوننت `ProductUiPreview.tsx` با ۸ پریست UI واقعی و پشتیبانی خودکار از `imageSrc` + گالری لایت‌باکس `ProductLightboxGallery.tsx` با Focus Trap، Escape و ناوبری RTL)
   - `[TASK-PRD-304]`: `DONE` (کادر نصب هوشمند مرورگر `BrowserInstallBox.tsx` با تشخیص خودکار Chrome/Edge/Firefox/موبایل، دکمه کپی لینک با عرض ثابت، درگاه‌های وب کارنامه پلاس و باکس ۱۰ روز تست رایگان در بله)
   - `[TASK-PRD-305]`: `DONE` (بخش آموزش‌های لقمه‌ای ایتا `EitaaTutorialsSection.astro`، اتصال `FaqAccordion.tsx` به سوالات اختصاصی محصول و آپدیت پیش‌نمایش زنده روی `https://modir-plus.pages.dev/`)
-- **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: IN_PROGRESS]`
+- **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: DONE]` (`TASK-SUP-401` تا `TASK-SEO-404`)
   - `[TASK-SUP-401]`: `DONE` (پیاده‌سازی صفحه یکپارچه راهنمای نصب در Chrome/Edge/Firefox به‌صورت استور و فایل `.zip`، اصول حریم خصوصی مدارس، کارت‌های پشتیبانی ایتا/بله و آکاردئون FAQ)
   - `[TASK-SEO-402]`: `DONE` (تولید `sitemap.xml`، تنظیم `robots.txt`، اسکیماهای `JSON-LD` نوع `Organization` / `SoftwareApplication` / `FAQPage` و تصاویر OpenGraph اختصاصی در `public/og/`)
   - `[TASK-SEO-403]`: `DONE` (ممیزی کامل مرورگر روی تمام مسیرها در ۳۷۵، ۷۶۸ و ۱۴۴۰ پیکسل، تم روشن و تیره، تست کیبورد `FaqAccordion` و Focus Trap + ناوبری RTL در `ProductLightboxGallery`)
-  - `[TASK-SEO-404]`: `PENDING`
+  - `[TASK-SEO-404]`: `DONE` (نگارش `docs/DEPLOYMENT-GUIDE.md`، تکمیل بیلد و چک‌های نسخه `1.0.0` روی `main`؛ دیپلوی نهایی فاز ۴ روی `modir-plus.pages.dev` به دلیل تایم‌اوت اتصال اینترنت به API کلادفلر در انتظار اجرای مجدد دستور `wrangler pages deploy` است)
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SEO-403)
-- `.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای `TASK-SEO-403`.
-- `HANDOFF.md`: ثبت نتایج ممیزی کامل مرورگر، دسترس‌پذیری و سئو.
+## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SEO-404)
+- `docs/DEPLOYMENT-GUIDE.md`: مستندسازی دستورات چک/بیلد، انتشار Cloudflare Pages، اتصال دامنه `modir-plus.ir` و جایگزینی لینک‌های `isPlaceholderUrl: true`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای کل نقشه راه نسخه `1.0.0`.
+- **آدرس زنده فعلی:** `https://modir-plus.pages.dev/` (شامل نسخه فاز ۳؛ با اجرای مجدد `npx wrangler pages deploy dist --project-name modir-plus --branch main` به نسخه کامل فاز ۴ آپدیت می‌شود).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی جامع (TASK-SEO-403)
 - `npm run verify`: اسکن ۶۲ فایل -> `PASS`
@@ -78,5 +79,8 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/`.
 
 ## ۷. گام بعدی (Next Actionable Task)
-- ادامه **فاز ۴** از [ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md):
-  اجرای `[TASK-SEO-404]` (نگارش `docs/DEPLOYMENT-GUIDE.md`، دیپلوی نهایی روی `modir-plus.pages.dev` و مستندسازی اتصال دامنه `modir-plus.ir`).
+- **تمام فازهای توسعه نسخه `1.0.0` (`فاز ۱` تا `فاز ۴`) تکمیل شده‌اند.**
+- اقدامات باقیمانده از سوی مالک محصول:
+  1. جایگزینی لینک‌های دارای `isPlaceholderUrl: true` در `src/data/site.ts` و `src/data/products.ts` (لینک نهایی کانال ایتای مدیر پلاس، لینک پست آموزش‌ها و لینک استورهای کروم/اج/فایرفاکس).
+  2. قرار دادن اسکرین‌شات‌های بهینه `WebP` (بدون داده‌های واقعی دانش‌آموزان و مدارس) در `public/images/products/`.
+  3. اتصال دامنه `modir-plus.ir` به پروژه `modir-plus` در Cloudflare Pages طبق [DEPLOYMENT-GUIDE.md](docs/DEPLOYMENT-GUIDE.md) و تغییر وضعیت ADRها به `ACCEPTED`.

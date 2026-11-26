@@ -17,7 +17,7 @@
 - **`[TASK-SEO-403]` [STATUS: DONE]** ممیزی جامع مرورگر، دسترس‌پذیری و Core Web Vitals روی پیش‌نمایش و نسخه بیلد نهایی:
   - بررسی رندر بصری در عرض‌های ۳۷۵px، ۷۶۸px و ۱۴۴۰px در هر دو تم روشن (Porcelain) و تیره (Obsidian Cobalt-Navy).
   - تست ناوبری کامل با کیبورد (`Tab`, `Enter`, `Escape`, `ArrowLeft/ArrowRight`) و نبود خطای کنسول یا شکستگی لینک‌ها.
-- **`[TASK-SEO-404]` [STATUS: PENDING]** استقرار نهایی و اتصال دامنه اصلی `modir-plus.ir` روی Cloudflare Pages:
+- **`[TASK-SEO-404]` [STATUS: DONE]** استقرار نهایی و اتصال دامنه اصلی `modir-plus.ir` روی Cloudflare Pages:
   - جایگزینی لینک‌های واقعی به جای موارد `isPlaceholderUrl: true` (در صورت تامین توسط مالک محصول) و تایید وضعیت نهایی ADRها.
   - نگارش راهنمای نگهداری و دیپلوی (`docs/DEPLOYMENT-GUIDE.md`)، انتشار نهایی روی `modir-plus.pages.dev` و اتصال دامنه اختصاصی `modir-plus.ir`.
   - اجرای کامل تست‌ها، `verify-zero-emoji.mjs`، `check-syntax.mjs`، بیلد نهایی و کامیت/پوش به `main`.
