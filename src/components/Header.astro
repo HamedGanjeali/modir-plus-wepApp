@@ -5,7 +5,11 @@ import { ThemeToggle } from './ThemeToggle';
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-40 border-b border-border/80 bg-background/80 backdrop-blur-xl">
+<header class="sticky top-0 z-40">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 border-b border-border/80 bg-background/85 backdrop-blur-xl"
+    aria-hidden="true"
+  />
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
     <a
       href="/"
@@ -67,7 +71,7 @@ const currentPath = Astro.url.pathname;
 
         <div
           data-mobile-nav-backdrop
-          class="fixed inset-x-0 top-[4.1rem] bottom-0 z-40 bg-background/70 backdrop-blur-sm"
+          class="fixed inset-x-0 top-[4.05rem] bottom-0 z-40 bg-background/75 backdrop-blur-sm"
           aria-hidden="true"
         />
 

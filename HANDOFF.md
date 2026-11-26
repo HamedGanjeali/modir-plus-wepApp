@@ -25,22 +25,23 @@
 - **فاز ۲ (صفحه اصلی اولیه `/`، داده‌های پایه و اجزا):** `[STATUS: DONE]` (`TASK-LND-201` تا `TASK-LND-204`)
 - **فاز ۲.۵ (ارتقای بصری Porcelain/Obsidian، فونت دوگانه، هاب دوکارتی کانونی و پیش‌نمایش Cloudflare):** `[STATUS: IN_PROGRESS]`
   - `[TASK-UIX-205]`: `DONE` (پالت Porcelain Light / Obsidian Cobalt-Navy، نصب `@fontsource-variable/estedad`، بافت شبکه‌ای، اصلاح منوی موبایل و هم‌ترازی ADR-003 و نقشه‌ها)
-  - `[TASK-LND-206]`: `IN_PROGRESS`
-  - `[TASK-DEP-207]`: `PENDING`
+  - `[TASK-LND-206]`: `DONE` (بازطراحی صفحه اصلی `/` به هاب دوکارتی کانونی، ماکاپ‌های پنجره‌ای لایه‌دار، نوار انتخاب ۵ ثانیه‌ای و بخش اعتماد/ایتا/FAQ فشرده + رفع باگ بک‌دراپ منوی موبایل)
+  - `[TASK-DEP-207]`: `IN_PROGRESS`
 - **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]`
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: PENDING]`
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۲.۵ (TASK-UIX-205)
-- `package.json` و `package-lock.json`: افزودن `@fontsource-variable/estedad` (`OFL-1.1`).
-- `src/styles/global.css`: ارتقای توکن‌های تم به Porcelain Light و Obsidian Cobalt-Navy و تعریف `--font-display` (`Estedad Variable`)، `--font-sans` (`Vazirmatn Variable`)، `.bg-dot-grid` و `.card-surface`.
-- `src/layouts/BaseLayout.astro`: ایمپورت فونت خودمیزبان `Estedad Variable`.
-- `src/components/Header.astro`: ناوبری کپسولی دسکتاپ و پنل تمام‌عرض بدون همپوشانی برای منوی موبایل `375px` همراه با بسته‌شدن با `Escape` یا کلیک پس‌زمینه.
-- `docs/decisions/ADR-003-obsidian-porcelain-dual-font-and-focused-hub.md` و `docs/DECISIONS.md`: ثبت تصمیم معماری ارتقای بصری و پیش‌نمایش آنلاین.
-- `.agents/AGENTS.md`، `.agents/skills/my-ui-ux-skill/web/rules/04-tailwind-shadcn-mastery.md` و `08-rtl-persian-typography.md` و نقشه‌های راه `v1.0.0`: هم‌ترازی استانداردها و اضافه شدن فاز ۲.۵ (شامل گام دیپلوی پیش‌نمایش `pages.dev`).
+## ۴. فایل‌های فعال و تغییریافته در فاز ۲.۵ (TASK-LND-206)
+- `src/data/site.ts`: فشرده‌سازی تیترها، افزودن `gatewayCards` برای کارت‌های دو محصول، خلاصه‌سازی ماتریس تصمیم‌گیری ۵ ثانیه‌ای و ۴ سوال متداول کلیدی صفحه اصلی.
+- `src/components/landing/HeroProductGateway.astro`: بخش Hero یکپارچه با بافت شبکه‌ای ظریف و نمایش فوری دو کارت شاخص سیدا پلاس و کارنامه پلاس در کانون توجه.
+- `src/components/landing/ProductMiniMock.astro`: ارتقای ماکاپ‌های مینیاتوری پنجره‌ای با سایه سطحی و خوانایی بدون برش در عرض ۳۷۵px.
+- `src/components/landing/DecisionMatrixSection.astro`: نوار تصمیم‌گیری ۵ ثانیه‌ای فشرده و نوار محصولات آتی بدون طولانی کردن صفحه.
+- `src/components/landing/TrustPrivacyHubSection.astro`: ردیف اعتماد ۴ ستونه فشرده، کارت هاب آموزشی ایتا و ۴ سوال متداول صفحه اصلی.
+- `src/components/Header.astro`: انتقال `backdrop-blur-xl` به لایه پس‌زمینه تا `position: fixed` بک‌دراپ منوی موبایل نسبت به کل ویوپورت عمل کند.
+- `src/pages/index.astro`: اتصال سه بخش جدید صفحه اصلی و حذف کامپوننت‌های منسوخ `HeroSection.astro` و `ProductShowcaseGrid.astro`.
 
-## ۵. نتایج بررسی‌ها و بیلد (TASK-UIX-205)
-- `npm run verify`: اسکن ۵۵ فایل -> `PASS`
-- `npm run check:syntax`: ۱۷ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
+## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-206)
+- `npm run verify`: اسکن ۵۴ فایل -> `PASS`
+- `npm run check:syntax`: ۱۶ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
 - `npm test`: `5 passed, 0 failed` -> `PASS`
 - `npm run build`: ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
 
@@ -52,4 +53,4 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/`.
 
 ## ۷. گام بعدی (Next Actionable Task)
-- اجرای `[TASK-LND-206]` از [ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md): بازطراحی صفحه اصلی به هاب دوکارتی کانونی و نوار تصمیم‌گیری ۵ ثانیه‌ای.
+- اجرای `[TASK-DEP-207]` از [ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md): ایجاد پروژه `modir-plus` روی Cloudflare Pages و دیپلوی پیش‌نمایش روی `modir-plus.pages.dev`.
