@@ -1,0 +1,59 @@
+---
+import { SITE_CONFIG } from '../data/site';
+import { ThemeToggle } from './ThemeToggle';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-lg">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <a
+      href="/"
+      class="flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 18V6l8 6 8-6v12" />
+        </svg>
+      </span>
+      <span class="flex flex-col">
+        <span class="text-base font-bold tracking-tight text-foreground">{SITE_CONFIG.brandName}</span>
+        <span dir="ltr" class="text-xs text-muted-foreground">{SITE_CONFIG.domain}</span>
+      </span>
+    </a>
+
+    <nav aria-label="ناوبری اصلی" class="hidden items-center gap-1 md:flex">
+      {SITE_CONFIG.navLinks.map((item) => {
+        const isActive =
+          item.href === '/'
+            ? currentPath === '/'
+            : currentPath.startsWith(item.href);
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-xl px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              isActive
+                ? 'bg-primary/10 text-primary'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+            ]}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <div class="flex items-center gap-2.5">
+      <a
+        href={SITE_CONFIG.eitaaHub.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-muted sm:inline-flex"
+      >
+        کانال آموزشی ایتا
+      </a>
+      <ThemeToggle client:load />
+    </div>
+  </div>
+</header>
