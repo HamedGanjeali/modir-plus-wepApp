@@ -35,13 +35,15 @@
   - `[TASK-PRD-305]`: `DONE` (بخش آموزش‌های لقمه‌ای ایتا `EitaaTutorialsSection.astro`، اتصال `FaqAccordion.tsx` به سوالات اختصاصی محصول و آپدیت پیش‌نمایش زنده روی `https://modir-plus.pages.dev/`)
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: IN_PROGRESS]`
   - `[TASK-SUP-401]`: `DONE` (پیاده‌سازی صفحه یکپارچه راهنمای نصب در Chrome/Edge/Firefox به‌صورت استور و فایل `.zip`، اصول حریم خصوصی مدارس، کارت‌های پشتیبانی ایتا/بله و آکاردئون FAQ)
-  - `[TASK-SEO-402]` تا `[TASK-SEO-404]`: `PENDING`
+  - `[TASK-SEO-402]`: `DONE` (تولید `sitemap.xml`، تنظیم `robots.txt`، اسکیماهای `JSON-LD` نوع `Organization` / `SoftwareApplication` / `FAQPage` و تصاویر OpenGraph اختصاصی در `public/og/`)
+  - `[TASK-SEO-403]` تا `[TASK-SEO-404]`: `PENDING`
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SUP-401)
-- `src/data/site.ts`: افزودن `guidePage` شامل `browserGuides` (مراحل نصب استور و `.zip` در کروم/اج/فایرفاکس)، `privacyGuarantees` و `faqs`.
-- `src/pages/guide.astro`: پیاده‌سازی کامل مسیر `/guide` با بردکرامب، کارت‌های راهنمای مرورگر، بخش حریم خصوصی مدارس، کارت‌های دسترسی به ایتا و ربات‌های بله و `FaqAccordion`.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای `TASK-SUP-401`.
-- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان فاز ۴ با `TASK-SEO-404` به‌روزرسانی مجدد می‌شود).
+## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SEO-402)
+- `src/pages/sitemap.xml.ts` و `public/robots.txt`: تولید نقشه سایت استاتیک `sitemap.xml` برای کل مسیرها.
+- `public/og/modir-plus-og.svg`، `sida-plus-og.svg` و `karnameh-plus-og.svg`: تصاویر پیش‌نمایش OpenGraph اختصاصی برای ایتا، بله و تلگرام.
+- `src/layouts/BaseLayout.astro`، `src/pages/index.astro`، `src/pages/products/[slug].astro` و `src/pages/guide.astro`: تزریق تگ‌های کامل `og:image` / `twitter:card` و اسکیماهای `JSON-LD` (`Organization`، `SoftwareApplication`، `FAQPage`).
+- `.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای `TASK-SEO-402`.
+- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان فاز ۴ با `TASK-SEO-404` به‌روزرسانی می‌شود).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی زنده (پایان فاز ۳)
 - `npm run verify`: اسکن ۶۱ فایل -> `PASS`
@@ -70,4 +72,4 @@
 
 ## ۷. گام بعدی (Next Actionable Task)
 - ادامه **فاز ۴** از [ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md):
-  اجرای `[TASK-SEO-402]` (سئوی فنی، `sitemap.xml`، اسکیماهای `JSON-LD` و تصاویر OpenGraph).
+  اجرای `[TASK-SEO-403]` (ممیزی جامع مرورگر، دسترس‌پذیری، ناوبری کیبورد و Core Web Vitals روی کل صفحات).

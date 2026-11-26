@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://modir-plus.ir/sitemap-index.xml
+Sitemap: https://modir-plus.ir/sitemap.xml

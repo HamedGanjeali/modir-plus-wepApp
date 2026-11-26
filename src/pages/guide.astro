@@ -6,11 +6,25 @@ import { PRODUCTS } from '../data/products';
 
 const { browserGuides, privacyGuarantees, faqs } = SITE_CONFIG.guidePage;
 const persianDigits = ['۱', '۲', '۳', '۴'];
+
+const guideFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title={`راهنمای نصب و حریم خصوصی | ${SITE_CONFIG.brandName}`}
   description="راهنمای مرحله‌به‌مرحله نصب افزونه‌های مدیر پلاس روی مرورگرهای کروم، اج و فایرفاکس همراه با اصول حفظ حریم خصوصی مدارس و راه‌های پشتیبانی"
+  jsonLd={guideFaqSchema}
 >
   <section class="relative overflow-hidden border-b border-border/80 pt-8 pb-12 lg:pt-10 lg:pb-14">
     <div

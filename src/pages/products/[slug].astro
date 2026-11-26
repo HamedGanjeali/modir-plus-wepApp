@@ -22,11 +22,50 @@ const product = getProductBySlug(slug ?? '');
 if (!product) {
   throw new Error(`Product not found for slug: ${slug}`);
 }
+
+const productUrl = new URL(`/products/${product.slug}/`, SITE_CONFIG.siteUrl).toString();
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: product.name,
+  alternateName: product.nameEn,
+  applicationCategory: 'EducationalApplication',
+  operatingSystem: 'Windows, macOS, Linux (Chrome, Edge, Firefox)',
+  softwareVersion: product.version,
+  description: product.heroSummary,
+  url: productUrl,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_CONFIG.brandName,
+    url: SITE_CONFIG.siteUrl,
+  },
+  offers: {
+    '@type': 'Offer',
+    description: SITE_CONFIG.trialPolicy.badgeLabel,
+    url: product.baleBotUrl,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: product.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title={`${product.name} | ${SITE_CONFIG.brandName}`}
   description={product.heroSummary}
+  ogImage={`/og/${product.slug}-og.svg`}
+  jsonLd={[softwareSchema, faqSchema]}
 >
   <ProductHero product={product} />
 

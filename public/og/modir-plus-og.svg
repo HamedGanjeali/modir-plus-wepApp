@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <rect width="1200" height="630" fill="#070B14"/>
+  <circle cx="960" cy="120" r="240" fill="#1D4ED8" fill-opacity="0.18"/>
+  <circle cx="240" cy="510" r="220" fill="#047857" fill-opacity="0.16"/>
+  <rect x="64" y="64" width="1072" height="502" rx="32" fill="#0F172A" stroke="#1E293B" stroke-width="2"/>
+  <rect x="980" y="112" width="96" height="96" rx="24" fill="#1D4ED8"/>
+  <path d="M1004 180V140l24 18 24-18v40" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="952" y="156" text-anchor="end" fill="#F1F5F9" font-family="Tahoma, Arial, sans-serif" font-size="48" font-weight="bold">مدیر پلاس | Modir Plus</text>
+  <text x="952" y="206" text-anchor="end" fill="#94A3B8" font-family="Tahoma, Arial, sans-serif" font-size="26">دستیار هوشمند مدیران و معاونین مدارس ایران</text>
+  <rect x="116" y="276" width="460" height="220" rx="22" fill="#16223B" stroke="#10B981" stroke-opacity="0.45" stroke-width="2"/>
+  <text x="540" y="340" text-anchor="end" fill="#10B981" font-family="Tahoma, Arial, sans-serif" font-size="30" font-weight="bold">کارنامه پلاس — نسخه ۱.۰.۰</text>
+  <text x="540" y="392" text-anchor="end" fill="#CBD5E1" font-family="Tahoma, Arial, sans-serif" font-size="22">پورتال دبیران، حضورغیاب ۶ زنگی و کارنامه آنلاین اولیا</text>
+  <text x="540" y="454" text-anchor="end" fill="#10B981" font-family="Tahoma, Arial, sans-serif" font-size="20">۱۰ روز تست رایگان • @Karnameh_plus_bot</text>
+  <rect x="624" y="276" width="452" height="220" rx="22" fill="#16223B" stroke="#3B82F6" stroke-opacity="0.45" stroke-width="2"/>
+  <text x="1040" y="340" text-anchor="end" fill="#3B82F6" font-family="Tahoma, Arial, sans-serif" font-size="30" font-weight="bold">سیدا پلاس — نسخه ۲.۵.۰</text>
+  <text x="1040" y="392" text-anchor="end" fill="#CBD5E1" font-family="Tahoma, Arial, sans-serif" font-size="22">اتوماسیون سیدا، برنامه هفتگی هوشمند و مدیریت شاد</text>
+  <text x="1040" y="454" text-anchor="end" fill="#3B82F6" font-family="Tahoma, Arial, sans-serif" font-size="20">۱۰ روز تست رایگان • @sidayar_license_bot</text>
+</svg>

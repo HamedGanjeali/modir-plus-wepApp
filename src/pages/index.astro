@@ -3,9 +3,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroProductGateway from '../components/landing/HeroProductGateway.astro';
 import DecisionMatrixSection from '../components/landing/DecisionMatrixSection.astro';
 import TrustPrivacyHubSection from '../components/landing/TrustPrivacyHubSection.astro';
+import { SITE_CONFIG } from '../data/site';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_CONFIG.brandName,
+  alternateName: SITE_CONFIG.brandNameEn,
+  url: SITE_CONFIG.siteUrl,
+  description: SITE_CONFIG.heroDescription,
+  sameAs: [SITE_CONFIG.eitaaHub.url],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: SITE_CONFIG.homeFaqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
-<BaseLayout>
+<BaseLayout jsonLd={[organizationSchema, faqSchema]}>
   <HeroProductGateway />
   <DecisionMatrixSection />
   <TrustPrivacyHubSection />
