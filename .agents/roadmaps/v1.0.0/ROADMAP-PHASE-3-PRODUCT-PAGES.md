@@ -19,7 +19,7 @@
   - حالت ویژه موبایل با دکمه یک‌کلیک «کپی لینک صفحه برای باز کردن در سیستم مدرسه» بدون پرش عرض دکمه.
   - بخش لینک‌های مستقیم درگاه‌های وب کارنامه پلاس (دبیران، معاونین، اولیا) در صفحه `karnameh-plus`.
   - کادر شفافیت **۱۰ روز تست رایگان بدون مبلغ ثابت** و دکمه ورود به ربات اختصاصی بله (`@sidayar_license_bot` / `@Karnameh_plus_bot`).
-- **`[TASK-PRD-305]` [STATUS: PENDING]** ساخت **بخش آموزش‌های کوتاه ایتا (`EitaaTutorialsSection.astro`)**، اتصال **FAQ اختصاصی محصول (`FaqAccordion.tsx`)** و به‌روزرسانی پیش‌نمایش آنلاین روی `modir-plus.pages.dev`.
+- **`[TASK-PRD-305]` [STATUS: DONE]** ساخت **بخش آموزش‌های کوتاه ایتا (`EitaaTutorialsSection.astro`)**، اتصال **FAQ اختصاصی محصول (`FaqAccordion.tsx`)** و به‌روزرسانی پیش‌نمایش آنلاین روی `modir-plus.pages.dev`.
 
 ## معیار پذیرش فاز ۳
 - هر دو مسیر `/products/sida-plus` و `/products/karnameh-plus` به‌طور کامل رندر شوند و تمام جزیره‌های React بدون خطای کنسول کار کنند.
