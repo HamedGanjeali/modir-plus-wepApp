@@ -27,13 +27,16 @@
   - `[TASK-UIX-205]`: `DONE` (پالت Porcelain Light / Obsidian Cobalt-Navy، نصب `@fontsource-variable/estedad`، بافت شبکه‌ای، اصلاح منوی موبایل و هم‌ترازی ADR-003 و نقشه‌ها)
   - `[TASK-LND-206]`: `DONE` (بازطراحی صفحه اصلی `/` به هاب دوکارتی کانونی، ماکاپ‌های پنجره‌ای لایه‌دار، نوار انتخاب ۵ ثانیه‌ای و بخش اعتماد/ایتا/FAQ فشرده + رفع باگ بک‌دراپ منوی موبایل)
   - `[TASK-DEP-207]`: `DONE` (ایجاد پروژه `modir-plus` روی Cloudflare Pages، افزودن `public/_headers` و دیپلوی زنده روی `https://modir-plus.pages.dev`)
-- **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]` — گام بعدی آماده اجرا (۵ گام: `TASK-PRD-301` تا `TASK-PRD-305`)
+- **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: IN_PROGRESS]`
+  - `[TASK-PRD-301]`: `DONE` (پیاده‌سازی `ProductHero.astro` و الگوی صفحه `/products/[slug]` با بردکرامب، `transition:name` هماهنگ برای عنوان و پیش‌نمایش، نقش‌های هدف و دکمه‌های نصب/تست بله)
+  - `[TASK-PRD-302]` تا `[TASK-PRD-305]`: `PENDING`
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: PENDING]` (۴ گام: `TASK-SUP-401` تا `TASK-SEO-404`)
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۲.۵ (TASK-DEP-207)
-- `public/_headers`: تنظیم هدرهای امنیتی (`X-Content-Type-Options`، `X-Frame-Options`، `Referrer-Policy`، `Permissions-Policy`) و کش `immutable` برای `/_astro/*`.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md`: ثبت وضعیت `DONE` برای فاز ۲.۵.
-- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (پروژه `modir-plus` روی Cloudflare Pages؛ دامنه نهایی `modir-plus.ir` در فاز ۴ متصل می‌شود).
+## ۴. فایل‌های فعال و تغییریافته در فاز ۳ (TASK-PRD-301)
+- `src/components/product/ProductHero.astro`: پیاده‌سازی Hero اختصاصی محصولات با بردکرامب (`خانه / محصولات / نام محصول`)، فونت `Estedad`، نشانگر نسخه و دوره ۱۰ روزه، پیش‌نمایش هماهنگ با View Transition (`ProductMiniMock`) و دکمه‌های اقدام.
+- `src/pages/products/[slug].astro`: اتصال `ProductHero` و لنگرهای `#gallery`، `#eitaa-tutorials` و `#install-box`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-3-PRODUCT-PAGES.md`: ثبت وضعیت `DONE` برای `TASK-PRD-301`.
+- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان فاز ۳ با `TASK-PRD-305` به‌روزرسانی مجدد می‌شود).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی زنده (پایان فاز ۲.۵)
 - `npm run verify`: اسکن ۵۴ فایل -> `PASS`
@@ -52,5 +55,5 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/`.
 
 ## ۷. گام بعدی (Next Actionable Task)
-- شروع **فاز ۳** از [ROADMAP-PHASE-3-PRODUCT-PAGES.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md):
-  اجرای `[TASK-PRD-301]` (تکمیل `ProductHero.astro` و صفحه کامل `/products/[slug]`) تا `[TASK-PRD-305]`.
+- ادامه **فاز ۳** از [ROADMAP-PHASE-3-PRODUCT-PAGES.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md):
+  اجرای `[TASK-PRD-302]` (بخش مقایسه قبل و بعد `BeforeAfterSection.astro` و تب‌های سناریوی واقعی `WorkflowScenarioTabs.tsx`).
