@@ -24,20 +24,23 @@
 - **فاز ۱ (زیرساخت، `.agents/` ارتقایافته، سیستم طراحی و لایه داده):** `[STATUS: DONE]` (`TASK-COR-101` تا `TASK-UIX-103`)
 - **فاز ۲ (صفحه اصلی `/`، گرید محصولات و ماتریس تصمیم‌گیری):** `[STATUS: IN_PROGRESS]`
   - `[TASK-LND-201]`: `DONE` (بخش Hero صفحه اصلی و کارت وضعیت اکوسیستم مدیر پلاس)
-  - `[TASK-LND-202]` تا `[TASK-LND-204]`: `PENDING`
+  - `[TASK-LND-202]`: `DONE` (گرید بنتوی ویترین محصولات `ProductShowcaseGrid`، پیش‌نمایش مینیاتوری UI هر دو محصول و کارت محصولات آتی)
+  - `[TASK-LND-203]` تا `[TASK-LND-204]`: `PENDING`
 - **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]`
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و استقرار Cloudflare Pages):** `[STATUS: PENDING]`
 
 ## ۴. فایل‌های فعال و تغییریافته در نشست جاری
-- `src/data/site.ts`: افزودن تیتر اصلی و شاخص‌های آماری Hero (`heroHeadline`, `heroMetrics`) و متن یکپارچه دوره آزمایشی ۱۰ روزه.
-- `src/components/landing/HeroSection.astro`: پیاده‌سازی بخش Hero با تیتر `text-balance`، نشانگر ۱۰ روز تست رایگان، دو دکمه اقدام و کارت خلاصه وضعیت ابزارهای اکوسیستم مدیر پلاس با ارتفاع رزروشده (`CLS = 0`).
-- `src/pages/index.astro`: اتصال `HeroSection` به صفحه اصلی.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: به‌روزرسانی وضعیت `TASK-LND-201` به `DONE`.
+- `src/data/site.ts`: افزودن تیتر و آمار Hero و داده‌های کارت «محصولات در دست توسعه (به‌زودی)» (`upcomingTools`).
+- `src/components/landing/HeroSection.astro`: پیاده‌سازی بخش Hero صفحه اصلی با کارت خلاصه وضعیت ابزارهای مدیر پلاس.
+- `src/components/landing/ProductMiniMock.astro`: پیش‌نمایش مینیاتوری `aspect-[16/10]` وفادار به رابط کاربری سیدا پلاس و کارنامه پلاس با داده‌های کاملاً ساختگی (`CLS = 0`).
+- `src/components/landing/ProductShowcaseGrid.astro`: گرید بنتوی معرفی محصولات فعال با `transition:name`، مخاطبان هدف، ۳ دستاورد کلیدی و کارت متوازن محصولات آتی.
+- `src/pages/index.astro`: اتصال `HeroSection` و `ProductShowcaseGrid`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: به‌روزرسانی وضعیت `TASK-LND-201` و `TASK-LND-202` به `DONE`.
 
-## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-201)
+## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-202)
 - اجرای کامل پس از ویرایش کد:
-  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۴۸ فایل -> `PASS`
-  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۲ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
+  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۵۰ فایل -> `PASS`
+  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۴ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
   - `npm test` (`node --test tests/*.test.mjs`): `4 passed, 0 failed, 0 skipped` -> `PASS`
   - `npm run build` (`astro build`): ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
 
@@ -50,4 +53,4 @@
 
 ## ۷. گام بعدی (Next Actionable Task)
 - ادامه **فاز ۲** از [ROADMAP-PHASE-2-LANDING-HOME.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2-LANDING-HOME.md):
-  اجرای `[TASK-LND-202]` (گرید بنتوی ویترین محصولات `ProductShowcaseGrid` به همراه پیش‌نمایش مینیاتوری واقعی رابط کاربری هر دو محصول و کارت محصولات آتی).
+  اجرای `[TASK-LND-203]` (ماتریس تصمیم‌گیری ۳۰ ثانیه‌ای «کدام ابزار مشکل امروز شما را حل می‌کند؟»).

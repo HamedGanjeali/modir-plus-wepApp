@@ -1,0 +1,189 @@
+---
+interface Props {
+  slug: 'sida-plus' | 'karnameh-plus';
+}
+
+const { slug } = Astro.props;
+
+const sidaModules = [
+  { label: 'عملیات سیدا', active: true },
+  { label: 'برنامه هفتگی', active: false },
+  { label: 'گروه‌های شاد', active: false },
+] as const;
+
+const sidaTimetableCells = [
+  { day: 'شنبه زنگ ۱', text: 'ریاضی • ۷۰۱' },
+  { day: 'شنبه زنگ ۲', text: 'علوم • ۸۰۲' },
+  { day: 'یکشنبه زنگ ۱', text: 'ادبیات • ۹۰۱' },
+  { day: 'یکشنبه زنگ ۲', text: 'عربی • ۷۰۱' },
+] as const;
+
+const bells = [
+  { num: '۱', ok: true },
+  { num: '۲', ok: true },
+  { num: '۳', ok: false },
+  { num: '۴', ok: true },
+  { num: '۵', ok: true },
+  { num: '۶', ok: true },
+] as const;
+---
+
+<div
+  transition:name={`product-preview-${slug}`}
+  class="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border bg-muted/70 p-2.5 sm:p-3"
+>
+  {slug === 'sida-plus' ? (
+    <div class="flex h-full flex-col justify-between gap-2">
+      <div class="flex items-center justify-between gap-2 rounded-xl border border-border bg-card px-2.5 py-1.5">
+        <div class="flex min-w-0 items-center gap-1.5">
+          <span class="h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+          <span dir="ltr" class="truncate font-mono text-[10px] text-muted-foreground">sida.medu.ir</span>
+        </div>
+        <span class="shrink-0 rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary tabular-nums">
+          سایدبار سیدا پلاس ۲.۵.۰
+        </span>
+      </div>
+
+      <div class="grid min-h-0 flex-1 grid-cols-12 gap-2">
+        <div class="col-span-5 flex flex-col justify-between rounded-xl border border-border bg-card p-2">
+          <div class="space-y-1">
+            {sidaModules.map((mod) => (
+              <div
+                class:list={[
+                  'rounded-lg px-2 py-1 text-[10px] font-medium',
+                  mod.active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground',
+                ]}
+              >
+                {mod.label}
+              </div>
+            ))}
+          </div>
+
+          <div class="space-y-1 border-t border-border pt-1.5">
+            <div class="flex items-center justify-between rounded-md bg-muted/80 px-1.5 py-1 text-[9px] text-foreground">
+              <span class="truncate">دفتر آمار پلمپ</span>
+              <span class="shrink-0 font-semibold text-success tabular-nums">۲۰۰ صفحه</span>
+            </div>
+            <div class="flex items-center justify-between rounded-md bg-muted/80 px-1.5 py-1 text-[9px] text-foreground">
+              <span class="truncate">بانک لینک شاد</span>
+              <span class="shrink-0 font-semibold text-primary tabular-nums">۳۵۰+ گروه</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-7 flex flex-col justify-between rounded-xl border border-border bg-card p-2">
+          <div class="flex items-center justify-between gap-1">
+            <span class="truncate text-[10px] font-bold text-foreground">چیدمان برنامه هفتگی</span>
+            <span class="shrink-0 rounded-full bg-success/15 px-1.5 py-0.5 text-[9px] font-semibold text-success tabular-nums">
+              ۰ تداخل
+            </span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-1.5">
+            {sidaTimetableCells.map((cell) => (
+              <div class="rounded-lg border border-border/80 bg-muted/50 px-1.5 py-1">
+                <p class="text-[8px] text-muted-foreground tabular-nums">{cell.day}</p>
+                <p class="truncate text-[9px] font-semibold text-foreground tabular-nums">{cell.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="flex items-center justify-between rounded-lg bg-primary/10 px-2 py-1 text-[9px] font-medium text-primary">
+            <span class="truncate">تولید ۳ سناریو + چاپ A4 افقی</span>
+            <span class="shrink-0 tabular-nums">اکسل</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="flex h-full flex-col justify-between gap-2">
+      <div class="flex items-center justify-between gap-2 rounded-xl border border-border bg-card px-2.5 py-1.5">
+        <div class="flex min-w-0 items-center gap-1.5">
+          <span class="h-2 w-2 shrink-0 rounded-full bg-success" aria-hidden="true" />
+          <span class="truncate text-[10px] font-bold text-foreground">داشبورد مدیر — کارنامه پلاس</span>
+        </div>
+        <span class="shrink-0 rounded-md bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
+          ذخیره آفلاین فعال
+        </span>
+      </div>
+
+      <div class="grid min-h-0 flex-1 grid-cols-12 gap-2">
+        <div class="col-span-6 flex flex-col justify-between rounded-xl border border-border bg-card p-2">
+          <div>
+            <div class="flex items-center justify-between text-[10px]">
+              <span class="font-medium text-muted-foreground">تکمیل نمرات</span>
+              <span class="font-bold text-success tabular-nums">۹۴٪</span>
+            </div>
+            <div class="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+              <div class="h-full w-[94%] rounded-full bg-success" />
+            </div>
+          </div>
+
+          <div>
+            <p class="text-[9px] font-medium text-muted-foreground">حضورغیاب ۶ زنگی امروز</p>
+            <div class="mt-1 grid grid-cols-6 gap-1">
+              {bells.map((b) => (
+                <span
+                  class:list={[
+                    'flex h-5 items-center justify-center rounded text-[9px] font-bold tabular-nums',
+                    b.ok ? 'bg-success/15 text-success' : 'bg-warning/20 text-warning',
+                  ]}
+                >
+                  {b.num}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-1 text-[9px]">
+            <span class="rounded bg-muted px-1.5 py-0.5 text-muted-foreground">دبیران</span>
+            <span class="rounded bg-muted px-1.5 py-0.5 text-muted-foreground">معاونین</span>
+            <span class="rounded bg-muted px-1.5 py-0.5 text-muted-foreground">اولیا</span>
+          </div>
+        </div>
+
+        <div class="col-span-6 flex flex-col justify-between rounded-xl border border-border bg-card p-2">
+          <div class="min-w-0">
+            <p class="truncate text-[10px] font-bold text-foreground">کارنامه نمونه — علی رضایی</p>
+            <p class="truncate text-[9px] text-muted-foreground tabular-nums">کلاس ۷۰۱ • دبیرستان آزمایشی</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <div>
+              <div class="flex justify-between text-[9px]">
+                <span class="text-foreground">نمره دانش‌آموز</span>
+                <span class="font-bold text-success tabular-nums">۱۹.۲۵</span>
+              </div>
+              <div class="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                <div class="h-full w-[94%] rounded-full bg-success" />
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[9px]">
+                <span class="text-muted-foreground">میانگین کلاس</span>
+                <span class="font-semibold text-primary tabular-nums">۱۷.۸۰</span>
+              </div>
+              <div class="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                <div class="h-full w-[82%] rounded-full bg-primary" />
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[9px]">
+                <span class="text-muted-foreground">میانگین پایه</span>
+                <span class="font-medium text-muted-foreground tabular-nums">۱۷.۱۰</span>
+              </div>
+              <div class="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                <div class="h-full w-[76%] rounded-full bg-muted-foreground/50" />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between rounded-lg bg-success/10 px-2 py-1 text-[9px] font-medium text-success">
+            <span class="truncate">انضباط محاسبه‌شده</span>
+            <span class="shrink-0 font-bold tabular-nums">۲۰ / ۲۰</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+</div>

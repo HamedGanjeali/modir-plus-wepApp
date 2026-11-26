@@ -8,6 +8,11 @@ export interface HeroMetric {
   label: string;
 }
 
+export interface UpcomingToolTeaser {
+  title: string;
+  targetRole: string;
+}
+
 export const SITE_CONFIG = {
   brandName: 'مدیر پلاس',
   brandNameEn: 'Modir Plus',
@@ -38,6 +43,17 @@ export const SITE_CONFIG = {
     isPlaceholderUrl: true,
     description:
       'تمامی ویدیوهای آموزشی کوتاه ۳۰ تا ۶۰ ثانیه‌ای، راهنمای نصب و اطلاع‌رسانی آپدیت‌ها در یک کانال یکپارچه با تفکیک هشتگ محصولات منتشر می‌شوند.',
+  },
+  upcomingTools: {
+    badge: 'محصولات در دست توسعه (به‌زودی)',
+    title: 'ابزارهای آینده سبد مدیر پلاس در حال آماده‌سازی است',
+    description:
+      'بر اساس نیازهای اعلام‌شده مدیران و معاونین در ربات‌های پشتیبانی، ابزارهای جدید با همان استاندارد سرعت، سادگی و دوره تست ۱۰ روزه به خانواده مدیر پلاس اضافه می‌شوند.',
+    items: [
+      { title: 'دستیار صورت‌جلسات و مصوبات شورا', targetRole: 'ویژه مدیر و دبیر شورا' },
+      { title: 'گزارش‌ساز دوره‌ای پیشرفت تحصیلی', targetRole: 'ویژه معاون آموزشی' },
+      { title: 'بایگانی هوشمند فرم‌های اداری مدرسه', targetRole: 'ویژه دفتر مدرسه' },
+    ] satisfies UpcomingToolTeaser[],
   },
   navLinks: [
     { label: 'صفحه اصلی', href: '/' },
