@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductHero from '../../components/product/ProductHero.astro';
 import BeforeAfterSection from '../../components/product/BeforeAfterSection.astro';
 import { WorkflowScenarioTabs } from '../../components/product/WorkflowScenarioTabs';
+import { ProductLightboxGallery } from '../../components/product/ProductLightboxGallery';
 import { PRODUCTS, getProductBySlug } from '../../data/products';
 import { SITE_CONFIG } from '../../data/site';
 
@@ -56,31 +57,41 @@ if (!product) {
     </div>
   </section>
 
-  <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <div id="gallery" class="scroll-mt-24 card-surface rounded-2xl border border-border bg-card p-6">
-        <h2 class="text-lg font-bold text-foreground">پیش‌نمایش‌های آماده تکمیل در گام‌های بعدی فاز ۳</h2>
-        <ul class="mt-4 space-y-2 text-sm text-muted-foreground">
-          {product.galleryItems.map((item) => (
-            <li>
-              <span class="font-semibold text-foreground">{item.title}:</span> {item.caption}
-            </li>
-          ))}
-        </ul>
-      </div>
+  <section id="gallery" class="scroll-mt-24 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
+    <div class="max-w-2xl">
+      <span class="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+        نمای واقعی محیط کار
+      </span>
+      <h2 class="mt-2.5 text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl text-balance">
+        گالری بخش‌های کلیدی {product.name}
+      </h2>
+      <p class="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">
+        برای بررسی جزئیات بیشتر، روی هر نما کلیک کنید یا با کلیدهای جهت‌نما بین صفحات جابه‌جا شوید.
+      </p>
+    </div>
 
-      <div id="eitaa-tutorials" class="scroll-mt-24 card-surface rounded-2xl border border-border bg-card p-6">
-        <h2 class="text-lg font-bold text-foreground">فهرست آموزش‌های لقمه‌ای در ایتا</h2>
-        <ul class="mt-4 space-y-2 text-sm text-muted-foreground">
-          {product.tutorials.map((tut) => (
-            <li>
-              <span class="font-medium text-foreground">{tut.title}</span>
-              {' '}(<span class="tabular-nums">{tut.duration}</span>) —{' '}
-              <span dir="ltr" class="inline-block font-mono text-xs text-primary">{tut.hashtag}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div class="mt-7">
+      <ProductLightboxGallery
+        productName={product.name}
+        accentTone={product.accentTone}
+        items={product.galleryItems}
+        client:visible
+      />
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+    <div id="eitaa-tutorials" class="scroll-mt-24 card-surface rounded-2xl border border-border bg-card p-6">
+      <h2 class="text-lg font-bold text-foreground">فهرست آموزش‌های لقمه‌ای در ایتا</h2>
+      <ul class="mt-4 space-y-2 text-sm text-muted-foreground">
+        {product.tutorials.map((tut) => (
+          <li>
+            <span class="font-medium text-foreground">{tut.title}</span>
+            {' '}(<span class="tabular-nums">{tut.duration}</span>) —{' '}
+            <span dir="ltr" class="inline-block font-mono text-xs text-primary">{tut.hashtag}</span>
+          </li>
+        ))}
+      </ul>
     </div>
 
     <div id="install-box" class="scroll-mt-24 card-surface mt-6 rounded-2xl border border-border bg-card p-6">
