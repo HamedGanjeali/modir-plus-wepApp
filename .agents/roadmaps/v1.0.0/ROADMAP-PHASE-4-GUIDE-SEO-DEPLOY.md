@@ -14,7 +14,7 @@
   - تنظیم `robots.txt` و `sitemap.xml` (سازگار با Astro 7).
   - تولید اسکیماهای `Organization` در صفحه اصلی و `SoftwareApplication` + `FAQPage` در صفحات محصولات.
   - تولید تصاویر پیش‌نمایش OpenGraph اختصاصی (SVG/PNG بهینه) برای اشتراک‌گذاری جذاب لینک‌ها در ایتا، بله و تلگرام.
-- **`[TASK-SEO-403]` [STATUS: PENDING]** ممیزی جامع مرورگر، دسترس‌پذیری و Core Web Vitals روی پیش‌نمایش و نسخه بیلد نهایی:
+- **`[TASK-SEO-403]` [STATUS: DONE]** ممیزی جامع مرورگر، دسترس‌پذیری و Core Web Vitals روی پیش‌نمایش و نسخه بیلد نهایی:
   - بررسی رندر بصری در عرض‌های ۳۷۵px، ۷۶۸px و ۱۴۴۰px در هر دو تم روشن (Porcelain) و تیره (Obsidian Cobalt-Navy).
   - تست ناوبری کامل با کیبورد (`Tab`, `Enter`, `Escape`, `ArrowLeft/ArrowRight`) و نبود خطای کنسول یا شکستگی لینک‌ها.
 - **`[TASK-SEO-404]` [STATUS: PENDING]** استقرار نهایی و اتصال دامنه اصلی `modir-plus.ir` روی Cloudflare Pages:

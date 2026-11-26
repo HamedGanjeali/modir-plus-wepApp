@@ -36,14 +36,21 @@
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: IN_PROGRESS]`
   - `[TASK-SUP-401]`: `DONE` (پیاده‌سازی صفحه یکپارچه راهنمای نصب در Chrome/Edge/Firefox به‌صورت استور و فایل `.zip`، اصول حریم خصوصی مدارس، کارت‌های پشتیبانی ایتا/بله و آکاردئون FAQ)
   - `[TASK-SEO-402]`: `DONE` (تولید `sitemap.xml`، تنظیم `robots.txt`، اسکیماهای `JSON-LD` نوع `Organization` / `SoftwareApplication` / `FAQPage` و تصاویر OpenGraph اختصاصی در `public/og/`)
-  - `[TASK-SEO-403]` تا `[TASK-SEO-404]`: `PENDING`
+  - `[TASK-SEO-403]`: `DONE` (ممیزی کامل مرورگر روی تمام مسیرها در ۳۷۵، ۷۶۸ و ۱۴۴۰ پیکسل، تم روشن و تیره، تست کیبورد `FaqAccordion` و Focus Trap + ناوبری RTL در `ProductLightboxGallery`)
+  - `[TASK-SEO-404]`: `PENDING`
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SEO-402)
-- `src/pages/sitemap.xml.ts` و `public/robots.txt`: تولید نقشه سایت استاتیک `sitemap.xml` برای کل مسیرها.
-- `public/og/modir-plus-og.svg`، `sida-plus-og.svg` و `karnameh-plus-og.svg`: تصاویر پیش‌نمایش OpenGraph اختصاصی برای ایتا، بله و تلگرام.
-- `src/layouts/BaseLayout.astro`، `src/pages/index.astro`، `src/pages/products/[slug].astro` و `src/pages/guide.astro`: تزریق تگ‌های کامل `og:image` / `twitter:card` و اسکیماهای `JSON-LD` (`Organization`، `SoftwareApplication`، `FAQPage`).
-- `.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای `TASK-SEO-402`.
-- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان فاز ۴ با `TASK-SEO-404` به‌روزرسانی می‌شود).
+## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SEO-403)
+- `.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای `TASK-SEO-403`.
+- `HANDOFF.md`: ثبت نتایج ممیزی کامل مرورگر، دسترس‌پذیری و سئو.
+
+## ۵. نتایج بررسی‌ها، بیلد و ممیزی جامع (TASK-SEO-403)
+- `npm run verify`: اسکن ۶۲ فایل -> `PASS`
+- `npm run check:syntax`: ۲۴ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
+- `npm test`: `5 passed, 0 failed` -> `PASS`
+- **ممیزی مرورگر روی بیلد نهایی (`/`، `/products/sida-plus/`، `/products/karnameh-plus/`، `/guide/`، `/sitemap.xml`، `/robots.txt`):**
+  - تمامی مسیرها با کد `200`، `0` خطای کنسول و `0` درخواست شبکه ناموفق لود شدند؛ وجود `canonical`، `og:image` و `JSON-LD` در همه صفحات تایید شد.
+  - نبود اسکرول افقی در عرض‌های `1440px`، `768px` و `375px` در هر دو تم روشن و تیره تایید شد.
+  - تست کیبوردی `FaqAccordion` (`Tab`, `Enter`, `Space`) و `ProductLightboxGallery` (`Tab` Focus Trap، `ArrowLeft`/`ArrowRight` RTL، `Escape` و بازگشت فوکوس به دکمه مبدا) بدون خطا پاس شد.
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی زنده (پایان فاز ۳)
 - `npm run verify`: اسکن ۶۱ فایل -> `PASS`
@@ -72,4 +79,4 @@
 
 ## ۷. گام بعدی (Next Actionable Task)
 - ادامه **فاز ۴** از [ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md):
-  اجرای `[TASK-SEO-403]` (ممیزی جامع مرورگر، دسترس‌پذیری، ناوبری کیبورد و Core Web Vitals روی کل صفحات).
+  اجرای `[TASK-SEO-404]` (نگارش `docs/DEPLOYMENT-GUIDE.md`، دیپلوی نهایی روی `modir-plus.pages.dev` و مستندسازی اتصال دامنه `modir-plus.ir`).
