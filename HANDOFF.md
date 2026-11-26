@@ -31,19 +31,19 @@
   - `[TASK-PRD-301]`: `DONE` (پیاده‌سازی `ProductHero.astro` و الگوی صفحه `/products/[slug]` با بردکرامب، `transition:name` هماهنگ برای عنوان و پیش‌نمایش، نقش‌های هدف و دکمه‌های نصب/تست بله)
   - `[TASK-PRD-302]`: `DONE` (بخش مقایسه قبل/بعد `BeforeAfterSection.astro` و تب‌های تعاملی سناریوی کاری `WorkflowScenarioTabs.tsx` شامل ۳ ماژول سیدا پلاس و ۴ ماژول کارنامه پلاس)
   - `[TASK-PRD-303]`: `DONE` (کامپوننت `ProductUiPreview.tsx` با ۸ پریست UI واقعی و پشتیبانی خودکار از `imageSrc` + گالری لایت‌باکس `ProductLightboxGallery.tsx` با Focus Trap، Escape و ناوبری RTL)
-  - `[TASK-PRD-304]` تا `[TASK-PRD-305]`: `PENDING`
+  - `[TASK-PRD-304]`: `DONE` (کادر نصب هوشمند مرورگر `BrowserInstallBox.tsx` با تشخیص خودکار Chrome/Edge/Firefox/موبایل، دکمه کپی لینک با عرض ثابت، درگاه‌های وب کارنامه پلاس و باکس ۱۰ روز تست رایگان در بله)
+  - `[TASK-PRD-305]`: `PENDING`
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: PENDING]` (۴ گام: `TASK-SUP-401` تا `TASK-SEO-404`)
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۳ (TASK-PRD-303)
-- `src/components/product/ProductUiPreview.tsx`: رندر ماکاپ‌های واقعی ۸ نمای سیدا پلاس و کارنامه پلاس با داده‌های کاملاً ساختگی (`CLS = 0` و `aspect-[16/10]`) به همراه سوییچ خودکار به `imageSrc` در صورت وجود تصویر `WebP`.
-- `src/components/product/ProductLightboxGallery.tsx`: گالری ۲ ستونه با دیالوگ لایت‌باکس دسترس‌پذیر (`Focus Trap`، `Escape`، `ArrowLeft/ArrowRight` در RTL و بازگردانی فوکوس به دکمه بازکننده).
-- `src/pages/products/[slug].astro`: اتصال `ProductLightboxGallery` در بخش `#gallery`.
-- `.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md`: ثبت وضعیت `DONE` برای `TASK-PRD-303`.
-- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان فاز ۳ با `TASK-PRD-305` به‌روزرسانی مجدد می‌شود).
+## ۴. فایل‌های فعال و تغییریافته در فاز ۳ (TASK-PRD-304)
+- `src/components/product/BrowserInstallBox.tsx`: تشخیص مرورگر کاربر (Chrome / Edge / Firefox / موبایل)، تب‌های نصب، دکمه کپی لینک صفحه با عرض ثابت (`min-w-[235px]`)، کارت شفافیت ۱۰ روز تست رایگان در بله و بخش درگاه‌های وب کارنامه پلاس (دبیران، معاونین، اولیا).
+- `src/pages/products/[slug].astro`: اتصال `BrowserInstallBox` در بخش `#install-box`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md`: ثبت وضعیت `DONE` برای `TASK-PRD-304`.
+- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان گام بعدی `TASK-PRD-305` به‌روزرسانی مجدد می‌شود).
 
-## ۵. نتایج بررسی‌ها و بیلد (TASK-PRD-303)
-- `npm run verify`: اسکن ۵۹ فایل -> `PASS`
-- `npm run check:syntax`: ۲۱ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
+## ۵. نتایج بررسی‌ها و بیلد (TASK-PRD-304)
+- `npm run verify`: اسکن ۶۰ فایل -> `PASS`
+- `npm run check:syntax`: ۲۲ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
 - `npm test`: `5 passed, 0 failed` -> `PASS`
 - `npm run build`: ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
 
@@ -65,4 +65,4 @@
 
 ## ۷. گام بعدی (Next Actionable Task)
 - ادامه **فاز ۳** از [ROADMAP-PHASE-3-PRODUCT-PAGES.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md):
-  اجرای `[TASK-PRD-304]` (کادر نصب هوشمند مرورگر `BrowserInstallBox.tsx`، کپی لینک موبایل، پورتال‌های وب کارنامه پلاس و باکس ۱۰ روز تست رایگان در بله).
+  اجرای `[TASK-PRD-305]` (بخش آموزش‌های لقمه‌ای ایتا `EitaaTutorialsSection.astro`، اتصال `FaqAccordion.tsx` به سوالات اختصاصی محصول و آپدیت پیش‌نمایش روی `modir-plus.pages.dev`).
