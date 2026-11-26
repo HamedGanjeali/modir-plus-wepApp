@@ -22,31 +22,24 @@
 
 ## ۳. ماتریس وضعیت فازها (`v1.0.0`)
 - **فاز ۱ (زیرساخت، `.agents/` ارتقایافته، سیستم طراحی و لایه داده):** `[STATUS: DONE]` (`TASK-COR-101` تا `TASK-UIX-103`)
-- **فاز ۲ (صفحه اصلی `/`، گرید محصولات و ماتریس تصمیم‌گیری):** `[STATUS: PENDING]` — گام بعدی آماده اجرا
+- **فاز ۲ (صفحه اصلی `/`، گرید محصولات و ماتریس تصمیم‌گیری):** `[STATUS: IN_PROGRESS]`
+  - `[TASK-LND-201]`: `DONE` (بخش Hero صفحه اصلی و کارت وضعیت اکوسیستم مدیر پلاس)
+  - `[TASK-LND-202]` تا `[TASK-LND-204]`: `PENDING`
 - **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]`
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و استقرار Cloudflare Pages):** `[STATUS: PENDING]`
 
-## ۴. فایل‌های فعال و تغییریافته در نشست راه‌اندازی
-- **اسناد و راهبری ایجنت:**
-  - `.agents/AGENTS.md`، `.agents/ARCHITECTURE.md`، `.agents/GLOSSARY.md`
-  - `.agents/skills/`: `grill-with-docs`, `handoff`, `ponytail`, `security-zero-leak`, `text-first-async-image-loading`, `my-ui-ux-skill` (نسخه وب-محور و عاری از ایموجی و بقایای اندروید/EShop Verse)
-  - `.agents/roadmaps/v1.0.0/`: `ROADMAP-MASTER-v1.0.0.md` و ۴ فایل فاز ۱ تا ۴
-  - `docs/DECISIONS.md`، `docs/decisions/README.md`، `ADR-001`، `ADR-002`
-- **سورس پروژه و کیفیت:**
-  - `package.json`, `astro.config.mjs`, `tsconfig.json`, `.gitignore`, `README.md`
-  - `src/styles/global.css`, `src/layouts/BaseLayout.astro`
-  - `src/data/site.ts`, `src/data/products.ts`
-  - `src/components/ThemeToggle.tsx`, `src/components/Header.astro`, `src/components/Footer.astro`
-  - `src/pages/index.astro`, `src/pages/products/[slug].astro`, `src/pages/guide.astro`
-  - `public/favicon.svg`, `public/robots.txt`, `public/images/products/.gitkeep`
-  - `scripts/verify-zero-emoji.mjs`, `scripts/check-syntax.mjs`, `tests/data-integrity.test.mjs`
+## ۴. فایل‌های فعال و تغییریافته در نشست جاری
+- `src/data/site.ts`: افزودن تیتر اصلی و شاخص‌های آماری Hero (`heroHeadline`, `heroMetrics`) و متن یکپارچه دوره آزمایشی ۱۰ روزه.
+- `src/components/landing/HeroSection.astro`: پیاده‌سازی بخش Hero با تیتر `text-balance`، نشانگر ۱۰ روز تست رایگان، دو دکمه اقدام و کارت خلاصه وضعیت ابزارهای اکوسیستم مدیر پلاس با ارتفاع رزروشده (`CLS = 0`).
+- `src/pages/index.astro`: اتصال `HeroSection` به صفحه اصلی.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: به‌روزرسانی وضعیت `TASK-LND-201` به `DONE`.
 
-## ۵. نتایج بررسی‌ها و بیلد (فاز ۱)
-- اجرای کامل پس از آخرین ویرایش:
-  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن کامل مخزن شامل `.agents/skills/` -> `PASS`
-  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس اسکریپت‌ها و `astro check` -> `PASS` (0 errors, 0 warnings, 0 hints)
+## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-201)
+- اجرای کامل پس از ویرایش کد:
+  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۴۸ فایل -> `PASS`
+  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۲ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
   - `npm test` (`node --test tests/*.test.mjs`): `4 passed, 0 failed, 0 skipped` -> `PASS`
-  - `npm run build` (`astro build`): ساخت ۴ مسیر استاتیک در `dist/` -> `PASS`
+  - `npm run build` (`astro build`): ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
 
 ## ۶. موارد در انتظار جایگزینی توسط مالک محصول (Placeholders)
 - در `src/data/site.ts` و `src/data/products.ts`:
@@ -56,5 +49,5 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/` (در فاز ۳ ابتدا با پیش‌نمایش UI وفادار به رابط واقعی دو افزونه رندر می‌شوند تا بعداً با تنظیم `imageSrc` جایگزین شوند).
 
 ## ۷. گام بعدی (Next Actionable Task)
-- شروع **فاز ۲** از [ROADMAP-PHASE-2-LANDING-HOME.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2-LANDING-HOME.md):
-  اجرای `[TASK-LND-201]` (بخش Hero کامل صفحه اصلی) و `[TASK-LND-202]` (کارت‌های تعاملی بنتو همراه با پیش‌نمایش واقعی دو محصول و کارت محصولات آتی).
+- ادامه **فاز ۲** از [ROADMAP-PHASE-2-LANDING-HOME.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2-LANDING-HOME.md):
+  اجرای `[TASK-LND-202]` (گرید بنتوی ویترین محصولات `ProductShowcaseGrid` به همراه پیش‌نمایش مینیاتوری واقعی رابط کاربری هر دو محصول و کارت محصولات آتی).

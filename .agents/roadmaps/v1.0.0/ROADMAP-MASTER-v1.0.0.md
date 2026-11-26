@@ -9,7 +9,7 @@
 | فاز | عنوان | شناسه تسک‌ها | وضعیت | فایل جزئیات |
 | :--- | :--- | :--- | :--- | :--- |
 | **فاز ۱** | اسکلت پروژه، `.agents/` ارتقایافته، سیستم طراحی دوفازی و لایه داده یکپارچه | `COR-101` تا `UIX-103` | `DONE` | [PHASE-1](ROADMAP-PHASE-1-FOUNDATION.md) |
-| **فاز ۲** | صفحه اصلی (`/`)، معرفی برند، گرید محصولات و ماتریس تصمیم‌گیری مدیر | `LND-201` تا `LND-204` | `PENDING` | [PHASE-2](ROADMAP-PHASE-2-LANDING-HOME.md) |
+| **فاز ۲** | صفحه اصلی (`/`)، معرفی برند، گرید محصولات و ماتریس تصمیم‌گیری مدیر | `LND-201` تا `LND-204` | `IN_PROGRESS` | [PHASE-2](ROADMAP-PHASE-2-LANDING-HOME.md) |
 | **فاز ۳** | صفحات اختصاصی محصولات (`sida-plus` و `karnameh-plus`)، ماکاپ واقعی، گالری و باکس نصب | `PRD-301` تا `PRD-305` | `PENDING` | [PHASE-3](ROADMAP-PHASE-3-PRODUCT-PAGES.md) |
 | **فاز ۴** | صفحه راهنمای نصب و حریم خصوصی (`/guide`)، سئو، ممیزی بصری و دیپلوی Cloudflare Pages | `SUP-401` تا `SEO-404` | `PENDING` | [PHASE-4](ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md) |
 
