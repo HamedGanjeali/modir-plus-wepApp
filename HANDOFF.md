@@ -33,13 +33,15 @@
   - `[TASK-PRD-303]`: `DONE` (کامپوننت `ProductUiPreview.tsx` با ۸ پریست UI واقعی و پشتیبانی خودکار از `imageSrc` + گالری لایت‌باکس `ProductLightboxGallery.tsx` با Focus Trap، Escape و ناوبری RTL)
   - `[TASK-PRD-304]`: `DONE` (کادر نصب هوشمند مرورگر `BrowserInstallBox.tsx` با تشخیص خودکار Chrome/Edge/Firefox/موبایل، دکمه کپی لینک با عرض ثابت، درگاه‌های وب کارنامه پلاس و باکس ۱۰ روز تست رایگان در بله)
   - `[TASK-PRD-305]`: `DONE` (بخش آموزش‌های لقمه‌ای ایتا `EitaaTutorialsSection.astro`، اتصال `FaqAccordion.tsx` به سوالات اختصاصی محصول و آپدیت پیش‌نمایش زنده روی `https://modir-plus.pages.dev/`)
-- **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: PENDING]` — گام بعدی آماده اجرا (۴ گام: `TASK-SUP-401` تا `TASK-SEO-404`)
+- **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: IN_PROGRESS]`
+  - `[TASK-SUP-401]`: `DONE` (پیاده‌سازی صفحه یکپارچه راهنمای نصب در Chrome/Edge/Firefox به‌صورت استور و فایل `.zip`، اصول حریم خصوصی مدارس، کارت‌های پشتیبانی ایتا/بله و آکاردئون FAQ)
+  - `[TASK-SEO-402]` تا `[TASK-SEO-404]`: `PENDING`
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۳ (TASK-PRD-305)
-- `src/components/product/EitaaTutorialsSection.astro`: هدر کانال مرکزی ایتا (`@modir_plus`)، کارت‌های آموزش کوتاه ۳۰ تا ۶۰ ثانیه‌ای با هشتگ محصول و موضوع، مدت زمان (`tabular-nums`) و دکمه کپی هشتگ.
-- `src/pages/products/[slug].astro`: اتصال `EitaaTutorialsSection` و `FaqAccordion` به سوالات اختصاصی هر محصول.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-3-PRODUCT-PAGES.md`: ثبت وضعیت `DONE` برای کل فاز ۳.
-- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (آپدیت‌شده با خروجی کامل فاز ۳).
+## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SUP-401)
+- `src/data/site.ts`: افزودن `guidePage` شامل `browserGuides` (مراحل نصب استور و `.zip` در کروم/اج/فایرفاکس)، `privacyGuarantees` و `faqs`.
+- `src/pages/guide.astro`: پیاده‌سازی کامل مسیر `/guide` با بردکرامب، کارت‌های راهنمای مرورگر، بخش حریم خصوصی مدارس، کارت‌های دسترسی به ایتا و ربات‌های بله و `FaqAccordion`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای `TASK-SUP-401`.
+- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (در پایان فاز ۴ با `TASK-SEO-404` به‌روزرسانی مجدد می‌شود).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی زنده (پایان فاز ۳)
 - `npm run verify`: اسکن ۶۱ فایل -> `PASS`
@@ -67,5 +69,5 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/`.
 
 ## ۷. گام بعدی (Next Actionable Task)
-- شروع **فاز ۴** از [ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md):
-  اجرای `[TASK-SUP-401]` (پیاده‌سازی کامل صفحه راهنمای نصب و حریم خصوصی `/guide`) تا `[TASK-SEO-404]`.
+- ادامه **فاز ۴** از [ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md):
+  اجرای `[TASK-SEO-402]` (سئوی فنی، `sitemap.xml`، اسکیماهای `JSON-LD` و تصاویر OpenGraph).

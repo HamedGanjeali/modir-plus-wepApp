@@ -1,32 +1,242 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { FaqAccordion } from '../components/FaqAccordion';
 import { SITE_CONFIG } from '../data/site';
 import { PRODUCTS } from '../data/products';
+
+const { browserGuides, privacyGuarantees, faqs } = SITE_CONFIG.guidePage;
+const persianDigits = ['۱', '۲', '۳', '۴'];
 ---
 
 <BaseLayout
   title={`راهنمای نصب و حریم خصوصی | ${SITE_CONFIG.brandName}`}
-  description="راهنمای نصب افزونه‌های مدیر پلاس روی مرورگرهای کروم، اج و فایرفاکس همراه با اصول حفظ حریم خصوصی مدارس"
+  description="راهنمای مرحله‌به‌مرحله نصب افزونه‌های مدیر پلاس روی مرورگرهای کروم، اج و فایرفاکس همراه با اصول حفظ حریم خصوصی مدارس و راه‌های پشتیبانی"
 >
-  <section class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-extrabold text-foreground">راهنمای نصب و حریم خصوصی</h1>
-    <p class="mt-3 text-base leading-relaxed text-muted-foreground">
-      این مسیر در فاز ۴ با راهنمای تصویری مرورگرها و پاسخ کامل به پرسش‌های امنیتی مدیران مدارس تکمیل می‌شود.
-    </p>
+  <section class="relative overflow-hidden border-b border-border/80 pt-8 pb-12 lg:pt-10 lg:pb-14">
+    <div
+      class="bg-dot-grid pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
+      aria-hidden="true"
+    />
 
-    <div class="mt-8 space-y-4">
-      {PRODUCTS.map((product) => (
-        <div class="rounded-2xl border border-border bg-card p-6">
-          <h2 class="text-lg font-bold text-foreground">{product.name}</h2>
-          <p class="mt-1 text-sm text-muted-foreground">{product.shortTagline}</p>
-          <p class="mt-3 text-xs text-muted-foreground">
-            ربات فعال‌سازی بله:{' '}
-            <a href={product.baleBotUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-primary hover:underline" dir="ltr">
-              {product.baleBotHandle}
-            </a>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav aria-label="مسیر صفحه" class="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+        <a
+          href="/"
+          class="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded"
+        >
+          خانه
+        </a>
+        <span aria-hidden="true">/</span>
+        <span class="font-semibold text-foreground">راهنمای نصب و حریم خصوصی</span>
+      </nav>
+
+      <div class="mt-5 max-w-3xl">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-xs font-semibold text-success">
+          <span class="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" />
+          مستندات یکپارچه نصب، امنیت و پشتیبانی
+        </span>
+
+        <h1 class="mt-4 text-3xl font-extrabold leading-[1.3] tracking-tight text-foreground sm:text-4xl text-balance">
+          راهنمای نصب مرورگرها و اصول حفظ حریم خصوصی مدارس
+        </h1>
+
+        <p class="mt-3 max-w-prose text-sm leading-[1.85] text-muted-foreground sm:text-base text-pretty">
+          نصب افزونه‌های سیدا پلاس و کارنامه پلاس روی سیستم دفتر مدرسه زیر یک دقیقه انجام می‌شود. در این صفحه روش نصب استور و نصب دستی فایل فشرده، سیاست حفاظت از داده‌های دانش‌آموزان و راه‌های پشتیبانی را می‌بینید.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3 text-xs font-semibold">
+          <a
+            href="#install-steps"
+            class="rounded-xl bg-primary px-4 py-2.5 text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            مراحل نصب در مرورگرها
+          </a>
+          <a
+            href="#privacy-policy"
+            class="rounded-xl border border-border bg-card px-4 py-2.5 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            اصول حریم خصوصی مدارس
+          </a>
+          <a
+            href="#support-channels"
+            class="rounded-xl border border-border bg-card px-4 py-2.5 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            کانال ایتا و ربات‌های بله
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="install-steps" class="scroll-mt-24 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
+    <div class="max-w-2xl">
+      <span class="text-xs font-semibold text-primary">آموزش گام‌به‌گام دسکتاپ</span>
+      <h2 class="mt-1.5 text-2xl font-extrabold text-foreground sm:text-3xl text-balance">
+        روش نصب در Google Chrome، Microsoft Edge و Firefox
+      </h2>
+      <p class="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">
+        هم می‌توانید از لینک استور مرورگر نصب کنید و هم در صورت محدودیت دسترسی، فایل فشرده (.zip) را در حالت توسعه‌دهنده بارگذاری نمایید.
+      </p>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      {browserGuides.map((guide) => (
+        <article class="card-surface flex flex-col justify-between rounded-3xl border border-border bg-card p-6">
+          <div>
+            <div class="flex items-center justify-between gap-2 border-b border-border pb-4">
+              <h3 dir="ltr" class="text-lg font-extrabold text-foreground">
+                {guide.browserName}
+              </h3>
+              <span class="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">
+                سازگار
+              </span>
+            </div>
+            <p class="mt-3 text-xs text-muted-foreground">{guide.recommendedFor}</p>
+
+            <div class="mt-5">
+              <p class="text-xs font-bold text-foreground">روش اول: نصب مستقیم از استور</p>
+              <ol class="mt-2.5 space-y-2">
+                {guide.storeSteps.map((step, idx) => (
+                  <li class="flex items-start gap-2.5 text-xs leading-relaxed text-muted-foreground">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-primary/12 text-[11px] font-bold text-primary tabular-nums">
+                      {persianDigits[idx] ?? idx + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div class="mt-5 border-t border-border pt-4">
+              <p class="text-xs font-bold text-foreground">روش دوم: نصب دستی بسته فشرده (.zip)</p>
+              <ol class="mt-2.5 space-y-2">
+                {guide.zipSteps.map((step, idx) => (
+                  <li class="flex items-start gap-2.5 text-xs leading-relaxed text-muted-foreground">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-muted text-[11px] font-bold text-foreground tabular-nums">
+                      {persianDigits[idx] ?? idx + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section
+    id="privacy-policy"
+    class="scroll-mt-24 border-y border-border/80 bg-muted/35 py-12 lg:py-14"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center rounded-full border border-success/30 bg-success/10 px-3 py-1 text-xs font-semibold text-success">
+          امنیت و امانت‌داری داده‌های آموزشی
+        </span>
+        <h2 class="mt-2.5 text-2xl font-extrabold text-foreground sm:text-3xl text-balance">
+          سیاست حفاظت از اطلاعات دانش‌آموزان و مدارس
+        </h2>
+      </div>
+
+      <div class="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {privacyGuarantees.map((item) => (
+          <article class="card-surface rounded-2xl border border-border bg-card p-5">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-success/12 text-success">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="mt-3.5 text-sm font-bold text-foreground">{item.title}</h3>
+            <p class="mt-2 text-xs leading-[1.8] text-muted-foreground text-pretty">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="support-channels" class="scroll-mt-24 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <article class="card-surface flex flex-col justify-between rounded-3xl border border-border bg-card p-6">
+        <div>
+          <span class="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+            هاب آموزشی ایتا
+          </span>
+          <h2 class="mt-3 text-lg font-extrabold text-foreground">{SITE_CONFIG.eitaaHub.name}</h2>
+          <p class="mt-2 text-xs leading-relaxed text-muted-foreground text-pretty">
+            {SITE_CONFIG.eitaaHub.description}
           </p>
         </div>
-      ))}
+
+        <div class="mt-5 border-t border-border pt-4">
+          <a
+            href={SITE_CONFIG.eitaaHub.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-full items-center justify-between rounded-xl bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <span>عضویت در کانال ایتا</span>
+            <span dir="ltr" class="font-mono">{SITE_CONFIG.eitaaHub.handle}</span>
+          </a>
+        </div>
+      </article>
+
+      {PRODUCTS.map((product) => {
+        const isPrimary = product.accentTone === 'primary';
+        return (
+          <article class="card-surface flex flex-col justify-between rounded-3xl border border-border bg-card p-6">
+            <div>
+              <span
+                class:list={[
+                  'rounded-full px-2.5 py-1 text-xs font-semibold',
+                  isPrimary ? 'bg-primary/10 text-primary' : 'bg-success/10 text-success',
+                ]}
+              >
+                پشتیبانی و لایسنس بله
+              </span>
+              <h2 class="mt-3 text-lg font-extrabold text-foreground">ربات {product.name}</h2>
+              <p class="mt-2 text-xs leading-relaxed text-muted-foreground text-pretty">
+                فعال‌سازی دوره ۱۰ روزه تست رایگان، استعلام تعرفه به‌روز، تمدید اشتراک و مدیریت دستگاه‌ها.
+              </p>
+            </div>
+
+            <div class="mt-5 flex flex-col gap-2 border-t border-border pt-4">
+              <a
+                href={product.baleBotUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class:list={[
+                  'inline-flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90',
+                  isPrimary ? 'bg-primary' : 'bg-success',
+                ]}
+              >
+                <span>ورود به ربات بله</span>
+                <span dir="ltr" class="font-mono">{product.baleBotHandle}</span>
+              </a>
+
+              <a
+                href={`/products/${product.slug}`}
+                class="inline-flex w-full items-center justify-center rounded-xl border border-border bg-background px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-muted"
+              >
+                صفحه اختصاصی {product.name}
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+      <div class="lg:col-span-4">
+        <span class="text-xs font-semibold text-primary">پاسخ سوالات فنی و امنیتی</span>
+        <h2 class="mt-1.5 text-2xl font-extrabold text-foreground text-balance">
+          سوالات متداول نصب و امنیت
+        </h2>
+      </div>
+      <div class="lg:col-span-8">
+        <FaqAccordion items={faqs} client:visible />
+      </div>
     </div>
   </section>
 </BaseLayout>
