@@ -23,27 +23,26 @@
 ## ۳. ماتریس وضعیت فازها (`v1.0.0`)
 - **فاز ۱ (زیرساخت، `.agents/` ارتقایافته، سیستم طراحی و لایه داده):** `[STATUS: DONE]` (`TASK-COR-101` تا `TASK-UIX-103`)
 - **فاز ۲ (صفحه اصلی اولیه `/`، داده‌های پایه و اجزا):** `[STATUS: DONE]` (`TASK-LND-201` تا `TASK-LND-204`)
-- **فاز ۲.۵ (ارتقای بصری Porcelain/Obsidian، فونت دوگانه، هاب دوکارتی کانونی و پیش‌نمایش Cloudflare):** `[STATUS: IN_PROGRESS]`
+- **فاز ۲.۵ (ارتقای بصری Porcelain/Obsidian، فونت دوگانه، هاب دوکارتی کانونی و پیش‌نمایش Cloudflare):** `[STATUS: DONE]` (`TASK-UIX-205` تا `TASK-DEP-207`)
   - `[TASK-UIX-205]`: `DONE` (پالت Porcelain Light / Obsidian Cobalt-Navy، نصب `@fontsource-variable/estedad`، بافت شبکه‌ای، اصلاح منوی موبایل و هم‌ترازی ADR-003 و نقشه‌ها)
   - `[TASK-LND-206]`: `DONE` (بازطراحی صفحه اصلی `/` به هاب دوکارتی کانونی، ماکاپ‌های پنجره‌ای لایه‌دار، نوار انتخاب ۵ ثانیه‌ای و بخش اعتماد/ایتا/FAQ فشرده + رفع باگ بک‌دراپ منوی موبایل)
-  - `[TASK-DEP-207]`: `IN_PROGRESS`
-- **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]`
-- **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: PENDING]`
+  - `[TASK-DEP-207]`: `DONE` (ایجاد پروژه `modir-plus` روی Cloudflare Pages، افزودن `public/_headers` و دیپلوی زنده روی `https://modir-plus.pages.dev`)
+- **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]` — گام بعدی آماده اجرا (۵ گام: `TASK-PRD-301` تا `TASK-PRD-305`)
+- **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و اتصال دامنه `modir-plus.ir`):** `[STATUS: PENDING]` (۴ گام: `TASK-SUP-401` تا `TASK-SEO-404`)
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۲.۵ (TASK-LND-206)
-- `src/data/site.ts`: فشرده‌سازی تیترها، افزودن `gatewayCards` برای کارت‌های دو محصول، خلاصه‌سازی ماتریس تصمیم‌گیری ۵ ثانیه‌ای و ۴ سوال متداول کلیدی صفحه اصلی.
-- `src/components/landing/HeroProductGateway.astro`: بخش Hero یکپارچه با بافت شبکه‌ای ظریف و نمایش فوری دو کارت شاخص سیدا پلاس و کارنامه پلاس در کانون توجه.
-- `src/components/landing/ProductMiniMock.astro`: ارتقای ماکاپ‌های مینیاتوری پنجره‌ای با سایه سطحی و خوانایی بدون برش در عرض ۳۷۵px.
-- `src/components/landing/DecisionMatrixSection.astro`: نوار تصمیم‌گیری ۵ ثانیه‌ای فشرده و نوار محصولات آتی بدون طولانی کردن صفحه.
-- `src/components/landing/TrustPrivacyHubSection.astro`: ردیف اعتماد ۴ ستونه فشرده، کارت هاب آموزشی ایتا و ۴ سوال متداول صفحه اصلی.
-- `src/components/Header.astro`: انتقال `backdrop-blur-xl` به لایه پس‌زمینه تا `position: fixed` بک‌دراپ منوی موبایل نسبت به کل ویوپورت عمل کند.
-- `src/pages/index.astro`: اتصال سه بخش جدید صفحه اصلی و حذف کامپوننت‌های منسوخ `HeroSection.astro` و `ProductShowcaseGrid.astro`.
+## ۴. فایل‌های فعال و تغییریافته در فاز ۲.۵ (TASK-DEP-207)
+- `public/_headers`: تنظیم هدرهای امنیتی (`X-Content-Type-Options`، `X-Frame-Options`، `Referrer-Policy`، `Permissions-Policy`) و کش `immutable` برای `/_astro/*`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md`: ثبت وضعیت `DONE` برای فاز ۲.۵.
+- **آدرس پیش‌نمایش زنده فعلی:** `https://modir-plus.pages.dev/` (پروژه `modir-plus` روی Cloudflare Pages؛ دامنه نهایی `modir-plus.ir` در فاز ۴ متصل می‌شود).
 
-## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-206)
+## ۵. نتایج بررسی‌ها، بیلد و ممیزی زنده (پایان فاز ۲.۵)
 - `npm run verify`: اسکن ۵۴ فایل -> `PASS`
 - `npm run check:syntax`: ۱۶ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
 - `npm test`: `5 passed, 0 failed` -> `PASS`
 - `npm run build`: ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
+- **ممیزی مرورگر روی `https://modir-plus.pages.dev/`:**
+  - دریافت کد `200` در مسیرهای `/`، `/products/sida-plus/`، `/products/karnameh-plus/` و `/guide/` بدون خطای کنسول و با لود فونت‌های `Estedad Variable` و `Vazirmatn Variable`.
+  - تایید تغییر تم روشن/تیره، نبود اسکرول افقی در `1440px` و `375px` و بسته‌شدن صحیح منوی موبایل با کلیک روی پس‌زمینه.
 
 ## ۶. موارد در انتظار جایگزینی توسط مالک محصول (Placeholders)
 - در `src/data/site.ts` و `src/data/products.ts`:
@@ -53,4 +52,5 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/`.
 
 ## ۷. گام بعدی (Next Actionable Task)
-- اجرای `[TASK-DEP-207]` از [ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2.5-DESIGN-POLISH-AND-PREVIEW.md): ایجاد پروژه `modir-plus` روی Cloudflare Pages و دیپلوی پیش‌نمایش روی `modir-plus.pages.dev`.
+- شروع **فاز ۳** از [ROADMAP-PHASE-3-PRODUCT-PAGES.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md):
+  اجرای `[TASK-PRD-301]` (تکمیل `ProductHero.astro` و صفحه کامل `/products/[slug]`) تا `[TASK-PRD-305]`.
