@@ -22,29 +22,32 @@
 
 ## ۳. ماتریس وضعیت فازها (`v1.0.0`)
 - **فاز ۱ (زیرساخت، `.agents/` ارتقایافته، سیستم طراحی و لایه داده):** `[STATUS: DONE]` (`TASK-COR-101` تا `TASK-UIX-103`)
-- **فاز ۲ (صفحه اصلی `/`، گرید محصولات و ماتریس تصمیم‌گیری):** `[STATUS: IN_PROGRESS]`
-  - `[TASK-LND-201]`: `DONE` (بخش Hero صفحه اصلی و کارت وضعیت اکوسیستم مدیر پلاس)
-  - `[TASK-LND-202]`: `DONE` (گرید بنتوی ویترین محصولات `ProductShowcaseGrid`، پیش‌نمایش مینیاتوری UI هر دو محصول و کارت محصولات آتی)
-  - `[TASK-LND-203]`: `DONE` (ماتریس تصمیم‌گیری ۳۰ ثانیه‌ای و جدول تطبیق سریع نیازهای مدرسه با سیدا پلاس، کارنامه پلاس یا ترکیب هر دو)
-  - `[TASK-LND-204]`: `PENDING`
-- **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]`
+- **فاز ۲ (صفحه اصلی `/`، گرید محصولات و ماتریس تصمیم‌گیری):** `[STATUS: DONE]` (`TASK-LND-201` تا `TASK-LND-204`)
+- **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]` — گام بعدی آماده اجرا
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و استقرار Cloudflare Pages):** `[STATUS: PENDING]`
 
-## ۴. فایل‌های فعال و تغییریافته در نشست جاری
-- `src/data/site.ts`: افزودن تیتر و آمار Hero، داده‌های کارت محصولات آتی (`upcomingTools`) و داده‌های ماتریس تصمیم‌گیری (`decisionMatrix`).
-- `src/components/landing/HeroSection.astro`: پیاده‌سازی بخش Hero صفحه اصلی با کارت خلاصه وضعیت ابزارهای مدیر پلاس.
-- `src/components/landing/ProductMiniMock.astro`: پیش‌نمایش مینیاتوری `aspect-[16/10]` وفادار به رابط کاربری سیدا پلاس و کارنامه پلاس با داده‌های کاملاً ساختگی (`CLS = 0`).
-- `src/components/landing/ProductShowcaseGrid.astro`: گرید بنتوی معرفی محصولات فعال با `transition:name` و کارت متوازن محصولات آتی.
-- `src/components/landing/DecisionMatrixSection.astro`: پیاده‌سازی ماتریس تصمیم‌گیری سه‌مسیره (سیدا پلاس، کارنامه پلاس، استفاده ترکیبی) و جدول تطبیق سریع ۶ سناریوی مدرسه.
-- `src/pages/index.astro`: اتصال `HeroSection`، `ProductShowcaseGrid` و `DecisionMatrixSection`.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: به‌روزرسانی وضعیت `TASK-LND-201` تا `TASK-LND-203` به `DONE`.
+## ۴. فایل‌های فعال و تغییریافته در فاز ۲ (نشست جاری)
+- `src/data/site.ts`: تکمیل داده‌های تایپ‌شده صفحه اصلی (`heroHeadline`, `heroMetrics`, `upcomingTools`, `decisionMatrix`, `trustSection`, `homeFaqs`) با رعایت تک‌منبعی و بدون قیمت عددی ثابت.
+- `src/components/landing/HeroSection.astro`: بخش Hero صفحه اصلی، نشانگر ۱۰ روز تست رایگان، دو دکمه اقدام و کارت وضعیت اکوسیستم مدیر پلاس (`CLS = 0`).
+- `src/components/landing/ProductMiniMock.astro`: پیش‌نمایش‌های مینیاتوری `aspect-[16/10]` وفادار به رابط کاربری سیدا پلاس و کارنامه پلاس با داده‌های کاملاً ساختگی.
+- `src/components/landing/ProductShowcaseGrid.astro`: گرید بنتوی محصولات فعال با `transition:name` و کارت متوازن «محصولات در دست توسعه (به‌زودی)».
+- `src/components/landing/DecisionMatrixSection.astro`: ماتریس تصمیم‌گیری ۳۰ ثانیه‌ای سه‌مسیره و جدول تطبیق سریع ۶ سناریوی مدرسه.
+- `src/components/landing/TrustPrivacyHubSection.astro`: ۴ ستون اصول اعتماد و حریم خصوصی مدارس، دعوت‌نامه هاب آموزشی ایتا (`#eitaa-hub`) و سوالات متداول صفحه اصلی.
+- `src/components/FaqAccordion.tsx`: جزیره React دسترس‌پذیر (`aria-expanded`, `aria-controls`, `useId`, ارقام فارسی `tabular-nums`).
+- `src/components/Header.astro`: افزودن منوی موبایل بدون جاوااسکریپت (`<details>`) برای دسترسی کامل در عرض ۳۷۵px.
+- `src/pages/index.astro`: ترکیب ۴ بخش کامل صفحه اصلی.
+- `tests/data-integrity.test.mjs`: افزودن تست اعتبارسنجی ساختار ماتریس تصمیم‌گیری، اصول اعتماد و سوالات متداول صفحه اصلی.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: تکمیل و ثبت وضعیت `DONE` برای تمام تسک‌های فاز ۲.
 
-## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-203)
-- اجرای کامل پس از ویرایش کد:
-  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۵۱ فایل -> `PASS`
-  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۵ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
-  - `npm test` (`node --test tests/*.test.mjs`): `4 passed, 0 failed, 0 skipped` -> `PASS`
+## ۵. نتایج بررسی‌ها، بیلد و ممیزی مرورگر (پایان فاز ۲)
+- اجرای کامل پس از آخرین ویرایش کد:
+  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۵۳ فایل -> `PASS`
+  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۷ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
+  - `npm test` (`node --test tests/*.test.mjs`): `5 passed, 0 failed, 0 skipped` -> `PASS`
   - `npm run build` (`astro build`): ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
+- ممیزی مرورگر روی `http://127.0.0.1:4321/`:
+  - عرض‌های `1440x900`، `768x1024` و `375x812`: بدون اسکرول افقی، `0` خطای کنسول و `0` درخواست شبکه ناموفق.
+  - تم روشن و تم تیره سرمه‌ای/OLED، منوی موبایل ۳۷۵px، تعامل `FaqAccordion` و مسیرهای `/products/sida-plus` و `/products/karnameh-plus` تایید شدند.
 
 ## ۶. موارد در انتظار جایگزینی توسط مالک محصول (Placeholders)
 - در `src/data/site.ts` و `src/data/products.ts`:
@@ -54,5 +57,5 @@
   - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/` (در فاز ۳ ابتدا با پیش‌نمایش UI وفادار به رابط واقعی دو افزونه رندر می‌شوند تا بعداً با تنظیم `imageSrc` جایگزین شوند).
 
 ## ۷. گام بعدی (Next Actionable Task)
-- ادامه **فاز ۲** از [ROADMAP-PHASE-2-LANDING-HOME.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2-LANDING-HOME.md):
-  اجرای `[TASK-LND-204]` (بخش سیاست شفافیت، حریم خصوصی مدارس، دعوت به هاب ایتا و آکاردئون سوالات متداول `FaqAccordion.tsx`).
+- شروع **فاز ۳** از [ROADMAP-PHASE-3-PRODUCT-PAGES.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-3-PRODUCT-PAGES.md):
+  اجرای `[TASK-PRD-301]` (تکمیل صفحه اختصاصی محصولات و `ProductHero.astro`) تا `[TASK-PRD-305]` (گالری لایت‌باکس، تب‌های سناریوی واقعی، کادر نصب هوشمند مرورگر و فهرست آموزش‌های لقمه‌ای ایتا).

@@ -34,3 +34,11 @@ test('karnameh-plus includes real portal links on medu-plus.workers.dev', () => 
   assert.match(productsSource, /https:\/\/karnameh\.medu-plus\.workers\.dev\/teacher\//);
   assert.match(productsSource, /https:\/\/karnameh\.medu-plus\.workers\.dev\/deputy\//);
 });
+
+test('home landing decision matrix, trust pillars and FAQs are configured in site.ts', () => {
+  assert.match(siteSource, /decisionMatrix:/);
+  assert.match(siteSource, /upcomingTools:/);
+  assert.match(siteSource, /trustSection:/);
+  assert.match(siteSource, /homeFaqs:/);
+  assert.doesNotMatch(siteSource, /خیلی راحت|به‌سادگی|تضمینی ۱۰۰٪|فوق‌العاده|معجزه‌آسا|بی‌رقیب/);
+});
