@@ -5,11 +5,11 @@ import { ThemeToggle } from './ThemeToggle';
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-lg">
+<header class="sticky top-0 z-40 border-b border-border/80 bg-background/80 backdrop-blur-xl">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
     <a
       href="/"
-      class="flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      class="flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -17,12 +17,12 @@ const currentPath = Astro.url.pathname;
         </svg>
       </span>
       <span class="flex flex-col">
-        <span class="text-base font-bold tracking-tight text-foreground">{SITE_CONFIG.brandName}</span>
+        <span class="font-display text-base font-bold tracking-tight text-foreground">{SITE_CONFIG.brandName}</span>
         <span dir="ltr" class="text-xs text-muted-foreground">{SITE_CONFIG.domain}</span>
       </span>
     </a>
 
-    <nav aria-label="ناوبری اصلی" class="hidden items-center gap-1 md:flex">
+    <nav aria-label="ناوبری اصلی" class="hidden items-center gap-1 rounded-2xl border border-border/80 bg-card/70 p-1 md:flex">
       {SITE_CONFIG.navLinks.map((item) => {
         const isActive =
           item.href === '/'
@@ -32,9 +32,9 @@ const currentPath = Astro.url.pathname;
           <a
             href={item.href}
             class:list={[
-              'rounded-xl px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              'rounded-xl px-3.5 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
               isActive
-                ? 'bg-primary/10 text-primary'
+                ? 'bg-primary text-primary-foreground shadow-xs'
                 : 'text-muted-foreground hover:bg-muted hover:text-foreground',
             ]}
           >
@@ -49,13 +49,13 @@ const currentPath = Astro.url.pathname;
         href={SITE_CONFIG.eitaaHub.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="hidden rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-muted sm:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        class="hidden rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-semibold text-foreground transition-colors hover:border-primary/50 hover:bg-muted sm:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         کانال آموزشی ایتا
       </a>
       <ThemeToggle client:load />
 
-      <details class="relative md:hidden">
+      <details id="mobile-nav-details" class="relative md:hidden">
         <summary
           aria-label="منوی ناوبری"
           class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"
@@ -65,8 +65,14 @@ const currentPath = Astro.url.pathname;
           </svg>
         </summary>
 
-        <div class="absolute end-0 top-full z-50 mt-2 w-60 rounded-2xl border border-border bg-card p-2 shadow-lg">
-          <nav aria-label="منوی موبایل" class="flex flex-col gap-1">
+        <div
+          data-mobile-nav-backdrop
+          class="fixed inset-x-0 top-[4.1rem] bottom-0 z-40 bg-background/70 backdrop-blur-sm"
+          aria-hidden="true"
+        />
+
+        <div class="card-surface fixed inset-x-4 top-[4.75rem] z-50 rounded-2xl border border-border bg-card p-3">
+          <nav aria-label="منوی موبایل" class="flex flex-col gap-1.5">
             {SITE_CONFIG.navLinks.map((item) => {
               const isActive =
                 item.href === '/'
@@ -76,10 +82,10 @@ const currentPath = Astro.url.pathname;
                 <a
                   href={item.href}
                   class:list={[
-                    'rounded-xl px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    'rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
                     isActive
-                      ? 'bg-primary/10 text-primary'
-                      : 'text-foreground hover:bg-muted',
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-muted/45 text-foreground hover:bg-muted',
                   ]}
                 >
                   {item.label}
@@ -90,9 +96,10 @@ const currentPath = Astro.url.pathname;
               href={SITE_CONFIG.eitaaHub.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-1 border-t border-border px-3 pt-2.5 pb-1.5 text-xs font-semibold text-primary hover:underline"
+              class="mt-1 flex items-center justify-between rounded-xl border border-primary/25 bg-primary/10 px-3.5 py-2.5 text-xs font-semibold text-primary"
             >
-              کانال آموزشی ایتا
+              <span>عضویت در کانال آموزشی ایتا</span>
+              <span dir="ltr" class="font-mono text-[11px]">{SITE_CONFIG.eitaaHub.handle}</span>
             </a>
           </nav>
         </div>
@@ -100,3 +107,32 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 </header>
+
+<script is:inline>
+  (function () {
+    function bindMobileMenu() {
+      var details = document.getElementById('mobile-nav-details');
+      if (!details) return;
+      var backdrop = details.querySelector('[data-mobile-nav-backdrop]');
+      if (backdrop && !backdrop.dataset.bound) {
+        backdrop.dataset.bound = '1';
+        backdrop.addEventListener('click', function () {
+          details.removeAttribute('open');
+        });
+      }
+      if (!document.documentElement.dataset.escMenuBound) {
+        document.documentElement.dataset.escMenuBound = '1';
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            var activeMenu = document.getElementById('mobile-nav-details');
+            if (activeMenu && activeMenu.hasAttribute('open')) {
+              activeMenu.removeAttribute('open');
+            }
+          }
+        });
+      }
+    }
+    bindMobileMenu();
+    document.addEventListener('astro:after-swap', bindMobileMenu);
+  })();
+</script>

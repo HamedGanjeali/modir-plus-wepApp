@@ -3,26 +3,28 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #f6f8fc;
+  --foreground: #0b1220;
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --muted: #f1f5f9;
+  --card-foreground: #0b1220;
+  --muted: #eef2f9;
   --muted-foreground: #475569;
-  --border: #e2e8f0;
-  --primary: #2563eb;
+  --border: #dce3ef;
+  --primary: #1d4ed8;
   --primary-foreground: #ffffff;
-  --success: #059669;
-  --warning: #d97706;
-  --ring: #2563eb;
+  --success: #047857;
+  --warning: #b45309;
+  --ring: #1d4ed8;
+  --card-shadow: 0 1px 2px rgba(11, 18, 32, 0.04), 0 10px 30px -12px rgba(29, 78, 216, 0.08);
+  --card-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
 }
 
 .dark {
-  --background: #0a0f1d;
-  --foreground: #f8fafc;
-  --card: #111827;
-  --card-foreground: #f8fafc;
-  --muted: #1e293b;
+  --background: #070b14;
+  --foreground: #f1f5f9;
+  --card: #0f172a;
+  --card-foreground: #f1f5f9;
+  --muted: #16223b;
   --muted-foreground: #94a3b8;
   --border: #1e293b;
   --primary: #3b82f6;
@@ -30,6 +32,8 @@
   --success: #10b981;
   --warning: #f59e0b;
   --ring: #3b82f6;
+  --card-shadow: 0 20px 44px -24px rgba(0, 0, 0, 0.75);
+  --card-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
@@ -46,6 +50,7 @@
   --color-warning: var(--warning);
   --color-ring: var(--ring);
   --font-sans: "Vazirmatn Variable", "Vazirmatn", system-ui, -apple-system, sans-serif;
+  --font-display: "Estedad Variable", "Estedad", "Vazirmatn Variable", system-ui, sans-serif;
 }
 
 @layer base {
@@ -60,6 +65,25 @@
     font-feature-settings: "ss01";
     overflow-x: hidden;
   }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--foreground) 10%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+.card-surface {
+  box-shadow: var(--card-shadow), var(--card-highlight);
 }
 
 @media (prefers-reduced-motion: reduce) {
