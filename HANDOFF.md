@@ -25,22 +25,24 @@
 - **فاز ۲ (صفحه اصلی `/`، گرید محصولات و ماتریس تصمیم‌گیری):** `[STATUS: IN_PROGRESS]`
   - `[TASK-LND-201]`: `DONE` (بخش Hero صفحه اصلی و کارت وضعیت اکوسیستم مدیر پلاس)
   - `[TASK-LND-202]`: `DONE` (گرید بنتوی ویترین محصولات `ProductShowcaseGrid`، پیش‌نمایش مینیاتوری UI هر دو محصول و کارت محصولات آتی)
-  - `[TASK-LND-203]` تا `[TASK-LND-204]`: `PENDING`
+  - `[TASK-LND-203]`: `DONE` (ماتریس تصمیم‌گیری ۳۰ ثانیه‌ای و جدول تطبیق سریع نیازهای مدرسه با سیدا پلاس، کارنامه پلاس یا ترکیب هر دو)
+  - `[TASK-LND-204]`: `PENDING`
 - **فاز ۳ (صفحات اختصاصی محصولات، ماکاپ UI واقعی، لایت‌باکس، باکس نصب و آموزش‌های ایتا):** `[STATUS: PENDING]`
 - **فاز ۴ (صفحه `/guide`، سئو/JSON-LD، ممیزی مرورگر و استقرار Cloudflare Pages):** `[STATUS: PENDING]`
 
 ## ۴. فایل‌های فعال و تغییریافته در نشست جاری
-- `src/data/site.ts`: افزودن تیتر و آمار Hero و داده‌های کارت «محصولات در دست توسعه (به‌زودی)» (`upcomingTools`).
+- `src/data/site.ts`: افزودن تیتر و آمار Hero، داده‌های کارت محصولات آتی (`upcomingTools`) و داده‌های ماتریس تصمیم‌گیری (`decisionMatrix`).
 - `src/components/landing/HeroSection.astro`: پیاده‌سازی بخش Hero صفحه اصلی با کارت خلاصه وضعیت ابزارهای مدیر پلاس.
 - `src/components/landing/ProductMiniMock.astro`: پیش‌نمایش مینیاتوری `aspect-[16/10]` وفادار به رابط کاربری سیدا پلاس و کارنامه پلاس با داده‌های کاملاً ساختگی (`CLS = 0`).
-- `src/components/landing/ProductShowcaseGrid.astro`: گرید بنتوی معرفی محصولات فعال با `transition:name`، مخاطبان هدف، ۳ دستاورد کلیدی و کارت متوازن محصولات آتی.
-- `src/pages/index.astro`: اتصال `HeroSection` و `ProductShowcaseGrid`.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: به‌روزرسانی وضعیت `TASK-LND-201` و `TASK-LND-202` به `DONE`.
+- `src/components/landing/ProductShowcaseGrid.astro`: گرید بنتوی معرفی محصولات فعال با `transition:name` و کارت متوازن محصولات آتی.
+- `src/components/landing/DecisionMatrixSection.astro`: پیاده‌سازی ماتریس تصمیم‌گیری سه‌مسیره (سیدا پلاس، کارنامه پلاس، استفاده ترکیبی) و جدول تطبیق سریع ۶ سناریوی مدرسه.
+- `src/pages/index.astro`: اتصال `HeroSection`، `ProductShowcaseGrid` و `DecisionMatrixSection`.
+- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-2-LANDING-HOME.md`: به‌روزرسانی وضعیت `TASK-LND-201` تا `TASK-LND-203` به `DONE`.
 
-## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-202)
+## ۵. نتایج بررسی‌ها و بیلد (TASK-LND-203)
 - اجرای کامل پس از ویرایش کد:
-  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۵۰ فایل -> `PASS`
-  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۴ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
+  - `npm run verify` (`node scripts/verify-zero-emoji.mjs`): اسکن ۵۱ فایل -> `PASS`
+  - `npm run check:syntax` (`node scripts/check-syntax.mjs`): بررسی سینتکس و `astro check` (۱۵ فایل) -> `PASS` (`0 errors, 0 warnings, 0 hints`)
   - `npm test` (`node --test tests/*.test.mjs`): `4 passed, 0 failed, 0 skipped` -> `PASS`
   - `npm run build` (`astro build`): ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
 
@@ -53,4 +55,4 @@
 
 ## ۷. گام بعدی (Next Actionable Task)
 - ادامه **فاز ۲** از [ROADMAP-PHASE-2-LANDING-HOME.md](.agents/roadmaps/v1.0.0/ROADMAP-PHASE-2-LANDING-HOME.md):
-  اجرای `[TASK-LND-203]` (ماتریس تصمیم‌گیری ۳۰ ثانیه‌ای «کدام ابزار مشکل امروز شما را حل می‌کند؟»).
+  اجرای `[TASK-LND-204]` (بخش سیاست شفافیت، حریم خصوصی مدارس، دعوت به هاب ایتا و آکاردئون سوالات متداول `FaqAccordion.tsx`).
