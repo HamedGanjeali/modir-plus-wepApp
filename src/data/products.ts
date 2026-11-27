@@ -269,7 +269,7 @@ export const PRODUCTS: ProductDefinition[] = [
     slug: 'karnameh-plus',
     name: 'کارنامه پلاس',
     nameEn: 'Karnameh Plus',
-    version: '۱.۰.۰',
+    version: '۱.۲.۱',
     categoryLabel: 'مدیریت نمرات، کارنامه آنلاین و حضورغیاب متوسطه اول',
     shortTagline: 'استخراج از سیدا، ثبت نمره دبیران، انضباط ۶ زنگی و کارنامه تحلیلی اولیا',
     heroSummary:
