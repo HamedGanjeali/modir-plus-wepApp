@@ -100,12 +100,9 @@ export const SITE_CONFIG = {
   },
   eitaaHub: {
     name: 'کانال رسمی مدیر پلاس در ایتا',
-    handle: '@modir_plus',
-    /**
-     * TODO: لینک واقعی کانال ایتا پس از تغییر نام و عکس کانال جایگزین شود.
-     */
-    url: 'https://eitaa.com/modir_plus',
-    isPlaceholderUrl: true,
+    handle: '@modir_plus_ir',
+    url: 'https://eitaa.com/modir_plus_ir',
+    isPlaceholderUrl: false,
     description:
       'تمامی ویدیوهای آموزشی کوتاه ۳۰ تا ۶۰ ثانیه‌ای، راهنمای نصب و اطلاع‌رسانی آپدیت‌ها در یک کانال یکپارچه با تفکیک هشتگ محصولات منتشر می‌شوند.',
   },
