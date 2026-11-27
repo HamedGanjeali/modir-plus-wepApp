@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import '@fontsource-variable/estedad';
 import '@fontsource-variable/vazirmatn';
 import '../styles/global.css';
@@ -55,8 +54,6 @@ const schemaList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     {schemaList.map((schema) => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     ))}
-
-    <ClientRouter />
 
     <script is:inline>
       (function () {

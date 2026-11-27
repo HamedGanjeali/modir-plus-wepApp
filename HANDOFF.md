@@ -39,10 +39,11 @@
   - `[TASK-SEO-403]`: `DONE` (ممیزی کامل مرورگر روی تمام مسیرها در ۳۷۵، ۷۶۸ و ۱۴۴۰ پیکسل، تم روشن و تیره، تست کیبورد `FaqAccordion` و Focus Trap + ناوبری RTL در `ProductLightboxGallery`)
   - `[TASK-SEO-404]`: `DONE` (نگارش `docs/DEPLOYMENT-GUIDE.md`، تکمیل بیلد و چک‌های نسخه `1.0.0` روی `main`؛ دیپلوی نهایی فاز ۴ روی `modir-plus.pages.dev` به دلیل تایم‌اوت اتصال اینترنت به API کلادفلر در انتظار اجرای مجدد دستور `wrangler pages deploy` است)
 
-## ۴. فایل‌های فعال و تغییریافته در بهینه‌سازی سرعت (گام ۱: حذف React از `/` و `/guide/`)
-- `src/components/ThemeToggle.astro` (جایگزین `ThemeToggle.tsx`): سوییچ تم روشن/تیره با اسکریپت سبک بدون React.
-- `src/components/FaqAccordion.astro` (جایگزین `FaqAccordion.tsx`): آکاردئون دسترس‌پذیر بدون React برای حذف کامل باندل `215 KB` React از صفحه اصلی و راهنما.
-- `src/components/Header.astro`، `TrustPrivacyHubSection.astro`، `src/pages/products/[slug].astro` و `src/pages/guide.astro`: اتصال نسخه‌های سبک `.astro`.
+## ۴. فایل‌های فعال و تغییریافته در بهینه‌سازی سرعت (گام ۱ و گام ۲)
+- **گام ۱ (`6f8fcc0`):** `src/components/ThemeToggle.astro` و `src/components/FaqAccordion.astro` جایگزین نسخه‌های React شدند تا باندل `215 KB` React از `/` و `/guide/` حذف شود.
+- **گام ۲:**
+  - `astro.config.mjs`: فعال‌سازی `build.inlineStylesheets: 'always'` برای حذف درخواست مسدودکننده CSS.
+  - `src/layouts/BaseLayout.astro` و `src/styles/global.css`: جایگزینی `<ClientRouter />` (`16.25 KB` JS و استایل‌های کی‌فریم اضافه) با `@view-transition { navigation: auto; }` بومی CSS.
 - **دامنه متصل‌شده:** `https://modir-plus.ir/` (و پیش‌نمایش `https://modir-plus.pages.dev/`).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی جامع (TASK-SEO-403)

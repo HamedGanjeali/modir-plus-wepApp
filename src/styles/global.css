@@ -54,6 +54,10 @@
 }
 
 @layer base {
+  @view-transition {
+    navigation: auto;
+  }
+
   html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;

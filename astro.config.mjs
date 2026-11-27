@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://modir-plus.ir',
   output: 'static',
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
