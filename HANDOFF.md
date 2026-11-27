@@ -39,11 +39,10 @@
   - `[TASK-SEO-403]`: `DONE` (ممیزی کامل مرورگر روی تمام مسیرها در ۳۷۵، ۷۶۸ و ۱۴۴۰ پیکسل، تم روشن و تیره، تست کیبورد `FaqAccordion` و Focus Trap + ناوبری RTL در `ProductLightboxGallery`)
   - `[TASK-SEO-404]`: `DONE` (نگارش `docs/DEPLOYMENT-GUIDE.md`، تکمیل بیلد و چک‌های نسخه `1.0.0` روی `main`؛ دیپلوی نهایی فاز ۴ روی `modir-plus.pages.dev` به دلیل تایم‌اوت اتصال اینترنت به API کلادفلر در انتظار اجرای مجدد دستور `wrangler pages deploy` است)
 
-## ۴. فایل‌های فعال و تغییریافته در بهینه‌سازی سرعت (گام ۱ و گام ۲)
+## ۴. فایل‌های فعال و تغییریافته در بهینه‌سازی سرعت (گام ۱ تا گام ۳)
 - **گام ۱ (`6f8fcc0`):** `src/components/ThemeToggle.astro` و `src/components/FaqAccordion.astro` جایگزین نسخه‌های React شدند تا باندل `215 KB` React از `/` و `/guide/` حذف شود.
-- **گام ۲:**
-  - `astro.config.mjs`: فعال‌سازی `build.inlineStylesheets: 'always'` برای حذف درخواست مسدودکننده CSS.
-  - `src/layouts/BaseLayout.astro` و `src/styles/global.css`: جایگزینی `<ClientRouter />` (`16.25 KB` JS و استایل‌های کی‌فریم اضافه) با `@view-transition { navigation: auto; }` بومی CSS.
+- **گام ۲ (`9b29d89`):** `astro.config.mjs` (`inlineStylesheets: 'always'`) و جایگزینی `ClientRouter` با `@view-transition` بومی CSS (حذف فایل مسدودکننده CSS و اسکریپت روتر).
+- **گام ۳:** `public/_headers` با سیاست کش `stale-while-revalidate` برای صفحات HTML و `immutable` برای `/_astro/*`، همراه با ممیزی زنده دامنه اصلی.
 - **دامنه متصل‌شده:** `https://modir-plus.ir/` (و پیش‌نمایش `https://modir-plus.pages.dev/`).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی جامع (TASK-SEO-403)
