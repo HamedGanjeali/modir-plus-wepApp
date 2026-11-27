@@ -3,7 +3,7 @@ import { SITE_CONFIG } from '../../data/site';
 import { PRODUCTS } from '../../data/products';
 import { FaqAccordion } from '../FaqAccordion';
 
-const { eyebrow, title, pillars, tutorialTags } = SITE_CONFIG.trustSection;
+const { eyebrow, title, pillars } = SITE_CONFIG.trustSection;
 ---
 
 <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
@@ -115,20 +115,29 @@ const { eyebrow, title, pillars, tutorialTags } = SITE_CONFIG.trustSection;
 
       <div class="min-w-0 lg:col-span-5">
         <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
-          {tutorialTags.map((item) => (
+          {PRODUCTS.map((product) => (
             <a
-              href={`/products/${item.productSlug}`}
-              class="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-muted/45 px-3.5 py-2 transition-colors hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              href={`/products/${product.slug}`}
+              class="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-muted/45 px-3.5 py-2.5 transition-colors hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <div class="flex min-w-0 flex-wrap items-center gap-2">
-                <span dir="ltr" class="inline-block text-xs font-semibold text-primary">{item.hashtag}</span>
-                <span dir="ltr" class="inline-block text-xs text-foreground">{item.topic}</span>
+              <div class="flex min-w-0 items-center gap-2">
+                <span dir="ltr" class="inline-block font-mono text-xs font-semibold text-primary">
+                  {product.eitaaProductHashtag}
+                </span>
+                <span class="truncate text-xs font-semibold text-foreground">{product.name}</span>
               </div>
               <span class="shrink-0 rounded-md bg-card px-2 py-0.5 text-[11px] font-medium text-muted-foreground tabular-nums">
-                {item.duration}
+                نسخه {product.version}
               </span>
             </a>
           ))}
+          <a
+            href="/guide"
+            class="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-muted/45 px-3.5 py-2.5 transition-colors hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <span class="text-xs font-semibold text-foreground">راهنمای نصب و حریم خصوصی</span>
+            <span class="shrink-0 text-[11px] font-medium text-primary">مشاهده</span>
+          </a>
         </div>
       </div>
     </div>

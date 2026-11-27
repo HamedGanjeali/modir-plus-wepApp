@@ -81,6 +81,7 @@ export interface ProductDefinition {
   baleBotUrl: string;
   eitaaProductHashtag: string;
   installVideoUrl: string;
+  installVideoIsPlaceholder?: boolean;
   installVideoDuration: string;
   highlights: string[];
   beforeAfter: BeforeAfterItem[];
@@ -108,6 +109,7 @@ export const PRODUCTS: ProductDefinition[] = [
     baleBotUrl: 'https://ble.ir/sidayar_license_bot',
     eitaaProductHashtag: '#سیدا_پلاس',
     installVideoUrl: 'https://eitaa.com/modir_plus_ir',
+    installVideoIsPlaceholder: true,
     installVideoDuration: '۴۰ ثانیه',
     highlights: [
       'عملیات یک‌کلیکه روی صفحه سیدا (رفع قفل جدول‌ها، تاریخ کارنامه، گواهی فارغ‌التحصیلان و دفتر آمار/امتحانات)',
@@ -278,6 +280,7 @@ export const PRODUCTS: ProductDefinition[] = [
     baleBotUrl: 'https://ble.ir/Karnameh_plus_bot',
     eitaaProductHashtag: '#کارنامه_پلاس',
     installVideoUrl: 'https://eitaa.com/modir_plus_ir',
+    installVideoIsPlaceholder: true,
     installVideoDuration: '۴۵ ثانیه',
     highlights: [
       'داشبورد مستقل در افزونه مدیر با ذخیره‌سازی محلی آفلاین، خروجی چندشیتی اکسل دبیران و چاپ رسمی A4/A5/A6',

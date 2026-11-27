@@ -15,7 +15,7 @@
 - **مدل Trial-First بدون قیمت عددی ثابت (`ADR-002`):** هر دو محصول دارای **۱۰ روز تست رایگان یکپارچه** هستند (بدون ذکر هدیه ۶۰ روزه قدیمی و بدون درج قیمت عددی ثابت در سایت). استعلام تعرفه و فعال‌سازی اشتراک در ربات‌های بله:
   - سیدا پلاس: `@sidayar_license_bot` (`https://ble.ir/sidayar_license_bot`)
   - کارنامه پلاس: `@Karnameh_plus_bot` (`https://ble.ir/Karnameh_plus_bot`)
-- **هاب آموزشی ایتا (`ADR-002`):** تغییر کاربری کانال دارای عضو به برند واحد **مدیر پلاس** و تفکیک ویدیوها با هشتگ محصولات (`#سیدا_پلاس` و `#کارنامه_پلاس`) همراه با دیپ‌لینک موضوعی از صفحات سایت.
+- **هاب آموزشی ایتا (`ADR-002`):** کانال رسمی مدیر پلاس در ایتا (`@modir_plus_ir` -> `https://eitaa.com/modir_plus_ir`) فعال و در سایت متصل شده است؛ کارت‌های ویدیویی جزئی تا زمان انتشار ویدیوها طبق نقشه راه `v1.1.0` مخفی شده‌اند.
 - **پالت دوفازی (`AGENTS.md` بند ۲.۳):** تم روشن Porcelain (`#f6f8fc` / `#ffffff`) به‌عنوان پیش‌فرض + تم تیره Obsidian Cobalt-Navy (`#070b14` / `#0f172a`) با رنگ اصلی آبی کُبالت (`#1d4ed8` / `#3b82f6`) و تاکیدی زمردی (`#047857` / `#10b981`) و کهربایی (`#b45309` / `#f59e0b`).
 - **گردش‌کار گیت (`AGENTS.md` بند ۲.۷):** **`Direct-to-Main`** (کامیت و پوش مستقیم هر گام تاییدشده روی `main`).
 - **وضعیت ADRها:** [ADR-001](docs/decisions/ADR-001-tech-stack-and-product-routes.md)، [ADR-002](docs/decisions/ADR-002-trial-first-and-eitaa-hub.md) و [ADR-003](docs/decisions/ADR-003-obsidian-porcelain-dual-font-and-focused-hub.md) با وضعیت `PROPOSED` ثبت شده‌اند و در انتظار تایید رسمی وضعیت به `ACCEPTED` هستند.
@@ -71,16 +71,13 @@
   - دریافت کد `200` در مسیرهای `/`، `/products/sida-plus/`، `/products/karnameh-plus/` و `/guide/` بدون خطای کنسول و با لود فونت‌های `Estedad Variable` و `Vazirmatn Variable`.
   - تایید تغییر تم روشن/تیره، نبود اسکرول افقی در `1440px` و `375px` و بسته‌شدن صحیح منوی موبایل با کلیک روی پس‌زمینه.
 
-## ۶. موارد در انتظار جایگزینی توسط مالک محصول (Placeholders)
-- در `src/data/site.ts` و `src/data/products.ts`:
-  - لینک نهایی کانال ایتا پس از تغییر نام به مدیر پلاس (`SITE_CONFIG.eitaaHub.url` با فلگ `isPlaceholderUrl: true`)
-  - لینک مستقیم پست هر آموزش در ایتا (`tutorials[*].postUrl`)
-  - لینک‌های نهایی استور Chrome / Edge / Firefox در `installTargets[*].installUrl`
-  - تصاویر اسکرین‌شات واقعی `WebP` محصولات در `public/images/products/`.
+## ۶. موارد برنامه‌ریزی‌شده برای نسخه ۱.۱.۰ (Roadmap v1.1.0)
+- تمام موارد در انتظار محتوا/لینک واقعی در [ROADMAP-v1.1.0.md](.agents/roadmaps/v1.1.0/ROADMAP-v1.1.0.md) ثبت شده‌اند و در نسخه `1.0.0` از رابط کاربری مخفی شده‌اند تا هیچ لینک یا دکمه ناتمامی نمایش داده نشود:
+  - `TASK-CNT-501`: لینک‌های استور Chrome / Edge / Firefox (`installTargets[*].installUrl`)
+  - `TASK-CNT-502`: ویدیوی راهنمای نصب و پست‌های آموزش لقمه‌ای ایتا (`installVideoUrl` و `tutorials[*].postUrl`)
+  - `TASK-CNT-503`: اسکرین‌شات‌های واقعی `WebP` در `public/images/products/` و تنظیم `imageSrc`
+  - `TASK-DEP-504`: اتصال دامنه نهایی `modir-plus.ir` و تایید نهایی ADRها.
 
 ## ۷. گام بعدی (Next Actionable Task)
-- **تمام فازهای توسعه نسخه `1.0.0` (`فاز ۱` تا `فاز ۴`) تکمیل شده‌اند.**
-- اقدامات باقیمانده از سوی مالک محصول:
-  1. جایگزینی لینک‌های دارای `isPlaceholderUrl: true` در `src/data/site.ts` و `src/data/products.ts` (لینک نهایی کانال ایتای مدیر پلاس، لینک پست آموزش‌ها و لینک استورهای کروم/اج/فایرفاکس).
-  2. قرار دادن اسکرین‌شات‌های بهینه `WebP` (بدون داده‌های واقعی دانش‌آموزان و مدارس) در `public/images/products/`.
-  3. اتصال دامنه `modir-plus.ir` به پروژه `modir-plus` در Cloudflare Pages طبق [DEPLOYMENT-GUIDE.md](docs/DEPLOYMENT-GUIDE.md) و تغییر وضعیت ADRها به `ACCEPTED`.
+- **نسخه `1.0.0` آماده انتشار است** (فقط با محتوای واقعی و آماده فعلی).
+- برای ادامه در نسخه بعدی، [ROADMAP-v1.1.0.md](.agents/roadmaps/v1.1.0/ROADMAP-v1.1.0.md) را با `TASK-CNT-501` دنبال کنید.

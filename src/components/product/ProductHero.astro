@@ -123,11 +123,13 @@ const isPrimary = product.accentTone === 'primary';
           </a>
           <span class="text-border" aria-hidden="true">|</span>
           <a
-            href="#eitaa-tutorials"
+            href={SITE_CONFIG.eitaaHub.url}
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-flex items-center gap-1 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded"
           >
-            <span>آموزش‌های لقمه‌ای در ایتا</span>
-            <span dir="ltr" class="font-mono text-primary">{product.eitaaProductHashtag}</span>
+            <span>کانال رسمی ایتا</span>
+            <span dir="ltr" class="font-mono text-primary">{SITE_CONFIG.eitaaHub.handle}</span>
           </a>
         </div>
       </div>
@@ -137,9 +139,11 @@ const isPrimary = product.accentTone === 'primary';
           <ProductMiniMock slug={product.slug} />
           <div class="mt-3 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-muted-foreground">
             <span>نمای محیط واقعی {product.name} با داده‌های نمونه</span>
-            <span class="rounded-md bg-muted px-2 py-0.5 font-medium text-foreground tabular-nums">
-              ویدیوی نصب: {product.installVideoDuration}
-            </span>
+            {!product.installVideoIsPlaceholder && (
+              <span class="rounded-md bg-muted px-2 py-0.5 font-medium text-foreground tabular-nums">
+                ویدیوی نصب: {product.installVideoDuration}
+              </span>
+            )}
           </div>
         </div>
       </div>
