@@ -39,10 +39,11 @@
   - `[TASK-SEO-403]`: `DONE` (ممیزی کامل مرورگر روی تمام مسیرها در ۳۷۵، ۷۶۸ و ۱۴۴۰ پیکسل، تم روشن و تیره، تست کیبورد `FaqAccordion` و Focus Trap + ناوبری RTL در `ProductLightboxGallery`)
   - `[TASK-SEO-404]`: `DONE` (نگارش `docs/DEPLOYMENT-GUIDE.md`، تکمیل بیلد و چک‌های نسخه `1.0.0` روی `main`؛ دیپلوی نهایی فاز ۴ روی `modir-plus.pages.dev` به دلیل تایم‌اوت اتصال اینترنت به API کلادفلر در انتظار اجرای مجدد دستور `wrangler pages deploy` است)
 
-## ۴. فایل‌های فعال و تغییریافته در فاز ۴ (TASK-SEO-404)
-- `docs/DEPLOYMENT-GUIDE.md`: مستندسازی دستورات چک/بیلد، انتشار Cloudflare Pages، اتصال دامنه `modir-plus.ir` و جایگزینی لینک‌های `isPlaceholderUrl: true`.
-- `.agents/roadmaps/v1.0.0/ROADMAP-MASTER-v1.0.0.md` و `ROADMAP-PHASE-4-GUIDE-SEO-DEPLOY.md`: ثبت وضعیت `DONE` برای کل نقشه راه نسخه `1.0.0`.
-- **آدرس زنده فعلی:** `https://modir-plus.pages.dev/` (شامل نسخه فاز ۳؛ با اجرای مجدد `npx wrangler pages deploy dist --project-name modir-plus --branch main` به نسخه کامل فاز ۴ آپدیت می‌شود).
+## ۴. فایل‌های فعال و تغییریافته در بهینه‌سازی سرعت (گام ۱: حذف React از `/` و `/guide/`)
+- `src/components/ThemeToggle.astro` (جایگزین `ThemeToggle.tsx`): سوییچ تم روشن/تیره با اسکریپت سبک بدون React.
+- `src/components/FaqAccordion.astro` (جایگزین `FaqAccordion.tsx`): آکاردئون دسترس‌پذیر بدون React برای حذف کامل باندل `215 KB` React از صفحه اصلی و راهنما.
+- `src/components/Header.astro`، `TrustPrivacyHubSection.astro`، `src/pages/products/[slug].astro` و `src/pages/guide.astro`: اتصال نسخه‌های سبک `.astro`.
+- **دامنه متصل‌شده:** `https://modir-plus.ir/` (و پیش‌نمایش `https://modir-plus.pages.dev/`).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی جامع (TASK-SEO-403)
 - `npm run verify`: اسکن ۶۲ فایل -> `PASS`

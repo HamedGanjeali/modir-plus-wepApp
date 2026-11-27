@@ -1,0 +1,116 @@
+---
+export interface FaqEntry {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FaqEntry[];
+  defaultOpenIndex?: number | null;
+}
+
+const { items, defaultOpenIndex = 0 } = Astro.props;
+const baseId = `faq-${Math.random().toString(36).slice(2, 8)}`;
+const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+
+function toPersianNumber(num: number): string {
+  return String(num)
+    .split('')
+    .map((digit) => persianDigits[Number(digit)] ?? digit)
+    .join('');
+}
+---
+
+<div class="space-y-3" data-faq-accordion>
+  {items.map((item, index) => {
+    const isOpen = defaultOpenIndex === index;
+    const buttonId = `${baseId}-btn-${index}`;
+    const panelId = `${baseId}-panel-${index}`;
+
+    return (
+      <div
+        data-faq-item
+        class="overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-primary/35"
+      >
+        <h3 class="text-sm font-bold text-foreground sm:text-base">
+          <button
+            type="button"
+            id={buttonId}
+            data-faq-trigger
+            aria-expanded={isOpen ? 'true' : 'false'}
+            aria-controls={panelId}
+            class="flex w-full items-center justify-between gap-3 px-5 py-4 text-start transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+          >
+            <span class="flex min-w-0 items-center gap-3">
+              <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary tabular-nums">
+                {toPersianNumber(index + 1)}
+              </span>
+              <span class="min-w-0 leading-snug text-foreground">{item.question}</span>
+            </span>
+
+            <svg
+              data-faq-chevron
+              class:list={[
+                'h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200',
+                isOpen && 'rotate-180 text-primary',
+              ]}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </h3>
+
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={buttonId}
+          data-faq-panel
+          hidden={!isOpen}
+          class="border-t border-border/80 bg-muted/25 px-5 py-4 text-sm leading-[1.85] text-muted-foreground"
+        >
+          <p class="max-w-prose text-pretty">{item.answer}</p>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+<script is:inline>
+  (function () {
+    function bindAccordions() {
+      document.querySelectorAll('[data-faq-accordion]').forEach(function (root) {
+        if (root.dataset.bound) return;
+        root.dataset.bound = '1';
+
+        var triggers = root.querySelectorAll('[data-faq-trigger]');
+        triggers.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var currentlyOpen = btn.getAttribute('aria-expanded') === 'true';
+
+            triggers.forEach(function (other) {
+              var panelId = other.getAttribute('aria-controls');
+              var panel = panelId ? document.getElementById(panelId) : null;
+              var chevron = other.querySelector('[data-faq-chevron]');
+              var shouldOpen = other === btn ? !currentlyOpen : false;
+
+              other.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+              if (panel) panel.hidden = !shouldOpen;
+              if (chevron) {
+                chevron.classList.toggle('rotate-180', shouldOpen);
+                chevron.classList.toggle('text-primary', shouldOpen);
+              }
+            });
+          });
+        });
+      });
+    }
+
+    bindAccordions();
+    document.addEventListener('astro:after-swap', bindAccordions);
+  })();
+</script>

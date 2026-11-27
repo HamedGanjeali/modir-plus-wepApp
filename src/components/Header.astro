@@ -1,6 +1,6 @@
 ---
 import { SITE_CONFIG } from '../data/site';
-import { ThemeToggle } from './ThemeToggle';
+import ThemeToggle from './ThemeToggle.astro';
 
 const currentPath = Astro.url.pathname;
 ---
@@ -57,7 +57,7 @@ const currentPath = Astro.url.pathname;
       >
         کانال آموزشی ایتا
       </a>
-      <ThemeToggle client:load />
+      <ThemeToggle />
 
       <details id="mobile-nav-details" class="relative md:hidden">
         <summary

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { FaqAccordion } from '../components/FaqAccordion';
+import FaqAccordion from '../components/FaqAccordion.astro';
 import { SITE_CONFIG } from '../data/site';
 import { PRODUCTS } from '../data/products';
 
@@ -249,7 +249,7 @@ const guideFaqSchema = {
         </h2>
       </div>
       <div class="lg:col-span-8">
-        <FaqAccordion items={faqs} client:visible />
+        <FaqAccordion items={faqs} />
       </div>
     </div>
   </section>

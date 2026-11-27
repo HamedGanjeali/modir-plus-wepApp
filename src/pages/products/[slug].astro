@@ -6,7 +6,7 @@ import { WorkflowScenarioTabs } from '../../components/product/WorkflowScenarioT
 import { ProductLightboxGallery } from '../../components/product/ProductLightboxGallery';
 import { BrowserInstallBox } from '../../components/product/BrowserInstallBox';
 import EitaaTutorialsSection from '../../components/product/EitaaTutorialsSection.astro';
-import { FaqAccordion } from '../../components/FaqAccordion';
+import FaqAccordion from '../../components/FaqAccordion.astro';
 import { PRODUCTS, getProductBySlug } from '../../data/products';
 import { SITE_CONFIG } from '../../data/site';
 
@@ -174,7 +174,7 @@ const faqSchema = {
       </div>
 
       <div class="lg:col-span-8">
-        <FaqAccordion items={product.faqs} client:visible />
+        <FaqAccordion items={product.faqs} />
       </div>
     </div>
   </section>

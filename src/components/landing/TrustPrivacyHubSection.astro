@@ -1,7 +1,7 @@
 ---
 import { SITE_CONFIG } from '../../data/site';
 import { PRODUCTS } from '../../data/products';
-import { FaqAccordion } from '../FaqAccordion';
+import FaqAccordion from '../FaqAccordion.astro';
 
 const { eyebrow, title, pillars } = SITE_CONFIG.trustSection;
 ---
@@ -155,7 +155,7 @@ const { eyebrow, title, pillars } = SITE_CONFIG.trustSection;
     </div>
 
     <div class="lg:col-span-8">
-      <FaqAccordion items={SITE_CONFIG.homeFaqs} client:visible />
+      <FaqAccordion items={SITE_CONFIG.homeFaqs} />
     </div>
   </div>
 </section>
