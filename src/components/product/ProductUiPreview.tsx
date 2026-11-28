@@ -303,7 +303,7 @@ function renderPresetMock(preset: ProductUiMockPreset, detailed: boolean) {
       return (
         <div className="flex h-full flex-col justify-between gap-2">
           <div className="flex items-center justify-between rounded-xl border border-border bg-card px-3 py-1.5">
-            <span className="text-[10px] font-bold text-foreground">حضورغیاب ۶ زنگی و انضباط معاون</span>
+            <span className="text-[10px] font-bold text-foreground">حضورغیاب ۵ زنگی و انضباط معاون</span>
             <span className="rounded-md bg-warning/15 px-2 py-0.5 text-[9px] font-semibold text-warning">
               موبایل‌پسند
             </span>

@@ -107,7 +107,7 @@ export const PRODUCTS: ProductDefinition[] = [
       'افزونه تخصصی مرورگر برای حذف عملیات تکراری داخل سامانه سیدا، شماره‌گذاری رسمی دفتر آمار و امتحانات، چیدمان هوشمند برنامه هفتگی و مدیریت گروه‌های پیام‌رسان شاد.',
     targetRoles: ['مدیر مدرسه', 'معاون اجرایی', 'معاون آموزشی'],
     accentTone: 'primary',
-    iconUrl: '/images/products/sida-plus-icon.jpg',
+    iconUrl: '/images/products/sida-plus-icon.webp',
     baleBotHandle: '@sidayar_license_bot',
     baleBotUrl: 'https://ble.ir/sidayar_license_bot',
     eitaaProductHashtag: '#سیدا_پلاس',
@@ -278,12 +278,12 @@ export const PRODUCTS: ProductDefinition[] = [
     nameEn: 'Karnameh Plus',
     version: '۱.۲.۱',
     categoryLabel: 'مدیریت نمرات، کارنامه آنلاین و حضورغیاب متوسطه اول',
-    shortTagline: 'استخراج از سیدا، ثبت نمره دبیران، انضباط ۶ زنگی و کارنامه تحلیلی اولیا',
+    shortTagline: 'استخراج از سیدا، ثبت نمره دبیران، انضباط ۵ زنگی و کارنامه تحلیلی اولیا',
     heroSummary:
       'سامانه یکپارچه ویژه مدارس متوسطه اول (پایه‌های هفتم، هشتم و نهم) که داشبورد آفلاین مدیر را به پورتال‌های تحت وب دبیران، معاونین و اولیا و ربات بله متصل می‌کند.',
     targetRoles: ['مدیر متوسطه اول', 'معاون انضباطی و آموزشی', 'دبیران', 'اولیا'],
     accentTone: 'emerald',
-    iconUrl: '/images/products/karnameh-plus-icon.png',
+    iconUrl: '/images/products/karnameh-plus-icon.webp',
     baleBotHandle: '@Karnameh_plus_bot',
     baleBotUrl: 'https://ble.ir/Karnameh_plus_bot',
     eitaaProductHashtag: '#کارنامه_پلاس',
@@ -292,7 +292,7 @@ export const PRODUCTS: ProductDefinition[] = [
     installVideoDuration: '۴۵ ثانیه',
     highlights: [
       'داشبورد مستقل در افزونه مدیر با ذخیره‌سازی محلی آفلاین، خروجی چندشیتی اکسل دبیران و چاپ رسمی A4/A5/A6',
-      'پورتال وب اختصاصی دبیران و معاونین بدون نیاز به نصب افزونه (ثبت سریع نمرات با کیبورد و حضورغیاب ۶ زنگی)',
+      'پورتال وب اختصاصی دبیران و معاونین بدون نیاز به نصب افزونه (ثبت سریع نمرات با کیبورد و حضورغیاب ۵ زنگی)',
       'پورتال اولیا با کارنامه آنلاین، نمودار مقایسه سه‌گانه (نمره دانش‌آموز، میانگین کلاس، میانگین پایه) و کارتکس انضباط',
     ],
     beforeAfter: [
@@ -304,7 +304,7 @@ export const PRODUCTS: ProductDefinition[] = [
       {
         task: 'ثبت غیبت زنگ‌به‌زنگ و محاسبه نمره انضباط',
         before: 'دفاتر کاغذی غیبت، جمع‌زدن دستی موارد انضباطی و دشواری تهیه کارتکس دانش‌آموز',
-        after: 'ماتریس ۶ زنگی موبایل‌پسند معاون با محاسبه خودکار نمره انضباط و خروجی کارتکس تاریخ‌دار',
+        after: 'ماتریس ۵ زنگی موبایل‌پسند معاون با محاسبه خودکار نمره انضباط و خروجی کارتکس تاریخ‌دار',
       },
       {
         task: 'صدور کارنامه و پاسخ به پیگیری اولیا',
@@ -331,10 +331,10 @@ export const PRODUCTS: ProductDefinition[] = [
       },
       {
         role: 'معاون انضباطی',
-        moduleLabel: 'انضباط و غیبت ۶ زنگی معاون',
+        moduleLabel: 'انضباط و غیبت ۵ زنگی معاون',
         scenarioTitle: 'ثبت سریع غیبت و موارد انضباطی از راهرو با موبایل',
         problem: 'ثبت موارد کلاسی در طول زنگ‌ها روی کاغذ باعث جا افتادن یا تاخیر در اطلاع‌رسانی به اولیا می‌شود.',
-        outcome: 'ثبت ۶ زنگی با موبایل در پورتال معاون، همگام‌سازی فوری با داشبورد مدرسه و آماده‌سازی پیام اطلاع‌رسانی.',
+        outcome: 'ثبت ۵ زنگی با موبایل در پورتال معاون، همگام‌سازی فوری با داشبورد مدرسه و آماده‌سازی پیام اطلاع‌رسانی.',
         steps: ['ثبت غیبت یا تاخیر برای هر زنگ', 'محاسبه خودکار کسر نمره انضباط', 'خروجی کارتکس تاریخ‌دار دانش‌آموز'],
       },
       {
@@ -362,10 +362,10 @@ export const PRODUCTS: ProductDefinition[] = [
         uiMockPreset: 'karnameh-teacher-portal',
       },
       {
-        id: 'karnameh-attendance-6bell',
-        title: 'ماتریس حضورغیاب ۶ زنگی و انضباط معاون',
+        id: 'karnameh-attendance-5bell',
+        title: 'ماتریس حضورغیاب ۵ زنگی و انضباط معاون',
         caption: 'ثبت غیبت به تفکیک هر زنگ، جستجوی سریع بین تمام کلاس‌ها و محاسبه آنی نمره انضباط.',
-        imageAlt: 'نمای پورتال معاون و ماتریس حضورغیاب ۶ زنگی',
+        imageAlt: 'نمای پورتال معاون و ماتریس حضورغیاب ۵ زنگی',
         uiMockPreset: 'karnameh-attendance-6bell',
       },
       {
@@ -416,7 +416,7 @@ export const PRODUCTS: ProductDefinition[] = [
       },
       {
         label: 'ورود به پورتال معاونین',
-        role: 'ثبت غیبت ۶ زنگی و انضباط با موبایل',
+        role: 'ثبت غیبت ۵ زنگی و انضباط با موبایل',
         url: 'https://karnameh.modir-plus.ir/deputy/',
       },
     ],
@@ -455,7 +455,7 @@ export const PRODUCTS: ProductDefinition[] = [
       },
       {
         id: 'kp-tut-attendance',
-        title: 'مدیریت حضورغیاب ۶ زنگی و کارتکس انضباط',
+        title: 'مدیریت حضورغیاب ۵ زنگی و کارتکس انضباط',
         duration: '۰۰:۵۰',
         hashtag: '#آموزش_حضور_غیاب',
         summary: 'ثبت موارد انضباطی، محاسبه خودکار نمره انضباط و چاپ گزارش غایبین.',
