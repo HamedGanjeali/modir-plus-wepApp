@@ -50,7 +50,7 @@
   --color-warning: var(--warning);
   --color-ring: var(--ring);
   --font-sans: "Vazirmatn Variable", "Vazirmatn", system-ui, -apple-system, sans-serif;
-  --font-display: "Estedad Variable", "Estedad", "Vazirmatn Variable", system-ui, sans-serif;
+  --font-display: "Vazirmatn Variable", "Vazirmatn", system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
@@ -82,12 +82,11 @@
   h6,
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
   }
 
-  /* فارسی: جلوگیری از افتادگی یا تنگی حروف فارسی در کلاس‌های پیش‌فرض tracking */
   .tracking-tight {
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 
   p {
