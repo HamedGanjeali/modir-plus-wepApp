@@ -311,15 +311,15 @@ function renderPresetMock(preset: ProductUiMockPreset, detailed: boolean) {
 
           <div className="flex-1 space-y-2 rounded-xl border border-border bg-card p-2.5">
             {[
-              { name: 'علی رضایی (۷۰۱)', bells: [true, true, true, true, true, true], score: '۲۰' },
-              { name: 'امیرحسین مرادی (۷۰۱)', bells: [true, true, false, true, true, true], score: '۱۹.۵' },
+              { name: 'علی رضایی (۷۰۱)', bells: [true, true, true, true, true], score: '۲۰' },
+              { name: 'امیرحسین مرادی (۷۰۱)', bells: [true, true, false, true, true], score: '۱۹.۵' },
             ].map((st) => (
               <div key={st.name} className="rounded-lg border border-border/80 bg-muted/45 p-2">
                 <div className="flex items-center justify-between text-[9px]">
                   <span className="font-bold text-foreground">{st.name}</span>
                   <span className="font-semibold text-success tabular-nums">انضباط: {st.score}</span>
                 </div>
-                <div className="mt-1.5 grid grid-cols-6 gap-1">
+                <div className="mt-1.5 grid grid-cols-5 gap-1">
                   {st.bells.map((ok, i) => (
                     <span
                       key={i}
@@ -327,7 +327,7 @@ function renderPresetMock(preset: ProductUiMockPreset, detailed: boolean) {
                         ok ? 'bg-success/15 text-success' : 'bg-warning/20 text-warning'
                       }`}
                     >
-                      زنگ {i + 1 === 1 ? '۱' : i + 1 === 2 ? '۲' : i + 1 === 3 ? '۳' : i + 1 === 4 ? '۴' : i + 1 === 5 ? '۵' : '۶'}
+                      زنگ {i + 1 === 1 ? '۱' : i + 1 === 2 ? '۲' : i + 1 === 3 ? '۳' : i + 1 === 4 ? '۴' : '۵'}
                     </span>
                   ))}
                 </div>

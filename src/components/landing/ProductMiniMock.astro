@@ -23,7 +23,6 @@ const bells = [
   { num: '۳', ok: false },
   { num: '۴', ok: true },
   { num: '۵', ok: true },
-  { num: '۶', ok: true },
 ] as const;
 ---
 
@@ -143,7 +142,7 @@ const bells = [
 
           <div>
             <p class="text-[9px] font-medium text-muted-foreground sm:text-[10px]">حضورغیاب ۵ زنگی</p>
-            <div class="mt-1 grid grid-cols-6 gap-1 sm:mt-1.5">
+            <div class="mt-1 grid grid-cols-5 gap-1 sm:mt-1.5">
               {bells.map((b) => (
                 <span
                   class:list={[
