@@ -78,6 +78,7 @@ export interface ProductDefinition {
   heroSummary: string;
   targetRoles: string[];
   accentTone: 'primary' | 'emerald';
+  iconUrl: string;
   baleBotHandle: string;
   baleBotUrl: string;
   eitaaProductHashtag: string;
@@ -106,6 +107,7 @@ export const PRODUCTS: ProductDefinition[] = [
       'افزونه تخصصی مرورگر برای حذف عملیات تکراری داخل سامانه سیدا، شماره‌گذاری رسمی دفتر آمار و امتحانات، چیدمان هوشمند برنامه هفتگی و مدیریت گروه‌های پیام‌رسان شاد.',
     targetRoles: ['مدیر مدرسه', 'معاون اجرایی', 'معاون آموزشی'],
     accentTone: 'primary',
+    iconUrl: '/images/products/sida-plus-icon.jpg',
     baleBotHandle: '@sidayar_license_bot',
     baleBotUrl: 'https://ble.ir/sidayar_license_bot',
     eitaaProductHashtag: '#سیدا_پلاس',
@@ -281,6 +283,7 @@ export const PRODUCTS: ProductDefinition[] = [
       'سامانه یکپارچه ویژه مدارس متوسطه اول (پایه‌های هفتم، هشتم و نهم) که داشبورد آفلاین مدیر را به پورتال‌های تحت وب دبیران، معاونین و اولیا و ربات بله متصل می‌کند.',
     targetRoles: ['مدیر متوسطه اول', 'معاون انضباطی و آموزشی', 'دبیران', 'اولیا'],
     accentTone: 'emerald',
+    iconUrl: '/images/products/karnameh-plus-icon.png',
     baleBotHandle: '@Karnameh_plus_bot',
     baleBotUrl: 'https://ble.ir/Karnameh_plus_bot',
     eitaaProductHashtag: '#کارنامه_پلاس',
