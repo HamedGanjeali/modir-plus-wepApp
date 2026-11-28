@@ -15,6 +15,7 @@ export interface BrowserDownloadTarget {
   label: string;
   installUrl: string;
   isPlaceholderUrl?: boolean;
+  isDisabled?: boolean;
   note: string;
 }
 
@@ -191,25 +192,29 @@ export const PRODUCTS: ProductDefinition[] = [
     ],
     installTargets: [
       {
-        browser: 'chrome',
-        label: 'نصب در Google Chrome',
-        installUrl: 'https://eitaa.com/modir_plus_ir',
-        isPlaceholderUrl: true,
-        note: 'پیشنهادی برای رایانه دفتر مدرسه (قابل سنجاق به‌صورت سایدبار)',
+        browser: 'firefox',
+        label: 'نصب در Mozilla Firefox',
+        installUrl: 'https://addons.mozilla.org/en-US/firefox/addon/sidaplus/',
+        isPlaceholderUrl: false,
+        isDisabled: false,
+        note: 'نسخه رسمی در مخزن افزونه‌های موزیلا فایرفاکس (پشتیبانی از نسخه ۱۰۹ به بالا)',
       },
       {
         browser: 'edge',
         label: 'نصب در Microsoft Edge',
-        installUrl: 'https://eitaa.com/modir_plus_ir',
-        isPlaceholderUrl: true,
-        note: 'سازگار کامل با ویندوز ۱۰ و ۱۱ بدون نیاز به نصب نرم‌افزار جانبی',
+        installUrl:
+          'https://microsoftedge.microsoft.com/addons/detail/sidayar/jfcighlggflgofffogomhkalmmepbgbc',
+        isPlaceholderUrl: false,
+        isDisabled: false,
+        note: 'نسخه رسمی در استور مایکروسافت اج؛ سازگار کامل با ویندوز ۱۰ و ۱۱ بدون نیاز به ابزار اضافه',
       },
       {
-        browser: 'firefox',
-        label: 'نصب در Mozilla Firefox',
+        browser: 'chrome',
+        label: 'نسخه Google Chrome (به‌زودی)',
         installUrl: 'https://eitaa.com/modir_plus_ir',
         isPlaceholderUrl: true,
-        note: 'پشتیبانی از نسخه ۱۰۹ به بالا',
+        isDisabled: true,
+        note: 'انتشار در فروشگاه گوگل کروم فعلاً غیرفعال است؛ برای سیستم دفتر مدرسه می‌توانید نسخه Edge یا Firefox را نصب کنید.',
       },
     ],
     faqs: [
@@ -370,25 +375,29 @@ export const PRODUCTS: ProductDefinition[] = [
     ],
     installTargets: [
       {
-        browser: 'edge',
-        label: 'نصب در Microsoft Edge',
-        installUrl: 'https://eitaa.com/modir_plus_ir',
-        isPlaceholderUrl: true,
-        note: 'بسته آماده افزونه مدیر برای ویندوز و مرورگر اج',
-      },
-      {
         browser: 'firefox',
         label: 'نصب در Mozilla Firefox',
-        installUrl: 'https://eitaa.com/modir_plus_ir',
-        isPlaceholderUrl: true,
+        installUrl:
+          'https://addons.mozilla.org/en-US/firefox/addon/%DA%A9%D8%A7%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%BE%D9%84%D8%A7%D8%B3-karnameh-plus/',
+        isPlaceholderUrl: false,
+        isDisabled: false,
         note: 'بسته مستقل فایرفاکس با پشتیبانی کامل از IndexedDB آفلاین',
       },
       {
-        browser: 'chrome',
-        label: 'نصب در Google Chrome',
+        browser: 'edge',
+        label: 'نسخه Microsoft Edge (به‌زودی)',
         installUrl: 'https://eitaa.com/modir_plus_ir',
         isPlaceholderUrl: true,
-        note: 'نصب سریع برای سیستم اداری مدیر مدرسه',
+        isDisabled: true,
+        note: 'نسخه استور Microsoft Edge فعلاً غیرفعال است؛ هم‌اکنون می‌توانید از نسخه Firefox استفاده کنید.',
+      },
+      {
+        browser: 'chrome',
+        label: 'نسخه Google Chrome (به‌زودی)',
+        installUrl: 'https://eitaa.com/modir_plus_ir',
+        isPlaceholderUrl: true,
+        isDisabled: true,
+        note: 'انتشار در فروشگاه گوگل کروم فعلاً غیرفعال است؛ هم‌اکنون می‌توانید نسخه Firefox را نصب کنید.',
       },
     ],
     externalPortals: [

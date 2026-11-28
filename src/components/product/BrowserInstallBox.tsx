@@ -34,7 +34,10 @@ export function BrowserInstallBox({
   trialBadgeLabel,
   trialSummary,
 }: BrowserInstallBoxProps) {
-  const defaultBrowser = installTargets[0]?.browser ?? 'chrome';
+  const defaultBrowser =
+    installTargets.find((t) => !t.isDisabled)?.browser ??
+    installTargets[0]?.browser ??
+    'chrome';
   const [selectedBrowser, setSelectedBrowser] = useState<BrowserId>(defaultBrowser);
   const [detectedBrowser, setDetectedBrowser] = useState<BrowserId | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -142,21 +145,31 @@ export function BrowserInstallBox({
                   onClick={() => setSelectedBrowser(target.browser)}
                   className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm ${
                     isSelected
-                      ? isPrimary
-                        ? 'bg-primary text-primary-foreground shadow-xs'
-                        : 'bg-success text-primary-foreground shadow-xs'
-                      : 'text-muted-foreground hover:bg-card hover:text-foreground'
+                      ? target.isDisabled
+                        ? 'border border-border bg-card text-foreground shadow-xs'
+                        : isPrimary
+                          ? 'bg-primary text-primary-foreground shadow-xs'
+                          : 'bg-success text-primary-foreground shadow-xs'
+                      : target.isDisabled
+                        ? 'text-muted-foreground/75 hover:bg-card/70 hover:text-muted-foreground'
+                        : 'text-muted-foreground hover:bg-card hover:text-foreground'
                   }`}
                 >
                   <span dir="ltr">{BROWSER_NAMES[target.browser]}</span>
-                  {isDetected && (
-                    <span
-                      className={`rounded px-1.5 py-0.5 text-[10px] ${
-                        isSelected ? 'bg-white/20 text-primary-foreground' : 'bg-primary/10 text-primary'
-                      }`}
-                    >
-                      شما
+                  {target.isDisabled ? (
+                    <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                      به‌زودی
                     </span>
+                  ) : (
+                    isDetected && (
+                      <span
+                        className={`rounded px-1.5 py-0.5 text-[10px] ${
+                          isSelected ? 'bg-white/20 text-primary-foreground' : 'bg-primary/10 text-primary'
+                        }`}
+                      >
+                        شما
+                      </span>
+                    )
                   )}
                 </button>
               );
@@ -171,7 +184,16 @@ export function BrowserInstallBox({
               </p>
 
               <div className="mt-5 flex flex-wrap items-center gap-3">
-                {activeTarget.isPlaceholderUrl ? (
+                {activeTarget.isDisabled ? (
+                  <button
+                    type="button"
+                    disabled
+                    aria-disabled="true"
+                    className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-xl border border-border bg-muted px-5 py-2.5 text-sm font-semibold text-muted-foreground opacity-70"
+                  >
+                    <span>نصب روی {BROWSER_NAMES[activeTarget.browser]} (به‌زودی)</span>
+                  </button>
+                ) : activeTarget.isPlaceholderUrl ? (
                   <a
                     href={baleBotUrl}
                     target="_blank"
@@ -195,8 +217,8 @@ export function BrowserInstallBox({
                     }`}
                   >
                     <span>نصب روی {BROWSER_NAMES[activeTarget.browser]}</span>
-                    <svg className="h-4 w-4 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                      <path d="M5 12h14m-6-6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg className="h-4 w-4 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <path d="M7 17 17 7M7 7h10v10" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
                 )}

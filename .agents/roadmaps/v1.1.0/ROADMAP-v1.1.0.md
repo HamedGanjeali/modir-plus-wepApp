@@ -8,9 +8,8 @@
 
 ## فهرست گام‌های یادآوری نسخه ۱.۱.۰
 
-- **`[TASK-CNT-501]` [STATUS: PENDING]** جایگزینی لینک‌های رسمی استور مرورگرها (`Chrome Web Store`، `Microsoft Edge Add-ons`، `Firefox Add-ons`):
-  - در `src/data/products.ts` برای هر دو محصول (`sida-plus` و `karnameh-plus`)، آدرس واقعی استور هر مرورگر را در `installTargets[*].installUrl` قرار دهید و فلگ `isPlaceholderUrl: true` را به `false` تغییر دهید (یا حذف کنید).
-  - پس از این تغییر، کامپوننت `BrowserInstallBox.tsx` به‌صورت خودکار دکمه «نصب روی مرورگر» را جایگزین دکمه دریافت از بله می‌کند.
+- **`[TASK-CNT-501]` [STATUS: IN_PROGRESS]** جایگزینی لینک‌های رسمی استور مرورگرها (`Chrome Web Store`، `Microsoft Edge Add-ons`، `Firefox Add-ons`):
+  - لینک‌های رسمی **سیدا پلاس** در `Firefox Add-ons` و `Microsoft Edge Add-ons` و لینک **کارنامه پلاس** در `Firefox Add-ons` متصل شدند؛ دکمه‌های `Chrome` (برای هر دو محصول) و `Edge` (برای کارنامه پلاس) فعلاً با فلگ `isDisabled: true` غیرفعال (`به‌زودی`) تنظیم شده‌اند و پس از انتشار استورهای باقیمانده فعال می‌شوند.
 
 - **`[TASK-CNT-502]` [STATUS: PENDING]** انتشار و اتصال ویدیوی راهنمای نصب و آموزش‌های لقمه‌ای در ایتا (`@modir_plus_ir`):
   - ویدیوی ۴۰ تا ۴۵ ثانیه‌ای نصب را در کانال `https://eitaa.com/modir_plus_ir` منتشر کرده، لینک مستقیم پست را در `installVideoUrl` قرار دهید و `installVideoIsPlaceholder: true` را بردارید.
