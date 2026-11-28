@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroProductGateway from '../components/landing/HeroProductGateway.astro';
-import DecisionMatrixSection from '../components/landing/DecisionMatrixSection.astro';
-import TrustPrivacyHubSection from '../components/landing/TrustPrivacyHubSection.astro';
+import TrustBar from '../components/landing/TrustBar.astro';
 import { SITE_CONFIG } from '../data/site';
 
 const organizationSchema = {
@@ -14,23 +13,9 @@ const organizationSchema = {
   description: SITE_CONFIG.heroDescription,
   sameAs: [SITE_CONFIG.eitaaHub.url],
 };
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: SITE_CONFIG.homeFaqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-};
 ---
 
-<BaseLayout jsonLd={[organizationSchema, faqSchema]}>
+<BaseLayout jsonLd={[organizationSchema]}>
   <HeroProductGateway />
-  <DecisionMatrixSection />
-  <TrustPrivacyHubSection />
+  <TrustBar />
 </BaseLayout>

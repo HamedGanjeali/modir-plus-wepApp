@@ -32,18 +32,6 @@ import ProductMiniMock from './ProductMiniMock.astro';
       <p class="mx-auto mt-4 max-w-2xl text-sm leading-[1.9] text-muted-foreground sm:text-base text-pretty">
         {SITE_CONFIG.heroDescription}
       </p>
-
-      <div class="mt-5 flex items-center justify-center">
-        <a
-          href="#decision-matrix"
-          class="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-md"
-        >
-          <span>کدام ابزار مناسب کار امروز شماست؟</span>
-          <svg class="h-3.5 w-3.5 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-      </div>
     </div>
 
     <div id="products" class="scroll-mt-24 mt-11 grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-7">
@@ -119,29 +107,17 @@ import ProductMiniMock from './ProductMiniMock.astro';
               </a>
             </div>
 
-            <div class="relative mt-5 flex flex-col items-stretch gap-2.5 border-t border-border/80 pt-4 sm:mt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-5">
+            <div class="relative mt-5 border-t border-border/80 pt-4 sm:mt-6 sm:pt-5">
               <a
                 href={`/products/${product.slug}`}
                 class:list={[
-                  'inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card',
+                  'inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold text-primary-foreground transition-all duration-200 hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card shadow-sm',
                   isPrimary ? 'bg-primary' : 'bg-success',
                 ]}
               >
-                <span>مشاهده و نصب {product.name}</span>
+                <span>مشاهده امکانات و نصب {product.name}</span>
                 <svg class="h-4 w-4 shrink-0 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-
-              <a
-                href={product.baleBotUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <span>۱۰ روز تست در بله</span>
-                <svg class="h-3.5 w-3.5 shrink-0 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                  <path d="M7 17 17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>
             </div>
