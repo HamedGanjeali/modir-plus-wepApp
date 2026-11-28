@@ -2,103 +2,180 @@
 import { SITE_CONFIG } from '../../data/site';
 
 const { eyebrow, title, subtitle, tracks } = SITE_CONFIG.decisionMatrix;
+
+const tabLabels: Record<(typeof tracks)[number]['id'], string> = {
+  'sida-plus': 'امور سیدا، برنامه هفتگی و شاد',
+  'karnameh-plus': 'نمره دبیران، غیبت ۶ زنگی و کارنامه',
+  combined: 'هماهنگی کل سال تحصیلی (هر دو)',
+};
 ---
 
 <section
   id="decision-matrix"
-  class="scroll-mt-24 border-y border-border/80 bg-muted/40 py-12 lg:py-14"
+  class="scroll-mt-24 border-y border-border/80 bg-muted/35 py-12 lg:py-16"
 >
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col justify-between gap-3 md:flex-row md:items-end">
-      <div class="max-w-2xl">
-        <span class="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary tabular-nums">
-          {eyebrow}
-        </span>
-        <h2 class="mt-2.5 text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl text-balance">
-          {title}
-        </h2>
-      </div>
-      <p class="max-w-md text-sm leading-relaxed text-muted-foreground text-pretty">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary tabular-nums">
+        {eyebrow}
+      </span>
+      <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl text-balance">
+        {title}
+      </h2>
+      <p class="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">
         {subtitle}
       </p>
     </div>
 
-    <div class="mt-7 grid grid-cols-1 gap-4 lg:grid-cols-3">
-      {tracks.map((track) => {
-        const isPrimary = track.tone === 'primary';
-        const isEmerald = track.tone === 'emerald';
-        const isCombined = track.tone === 'combined';
+    <div
+      data-decision-funnel
+      class="card-surface mt-8 rounded-3xl border border-border bg-card p-5 sm:p-7"
+    >
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <span class="text-xs font-bold text-foreground sm:text-sm">
+          نیاز اصلی امروز دفتر مدرسه را انتخاب کنید:
+        </span>
 
-        return (
-          <article
-            class:list={[
-              'card-surface flex flex-col justify-between rounded-2xl border bg-card p-5 transition-colors',
-              isCombined ? 'border-primary/40' : 'border-border hover:border-primary/40',
-            ]}
-          >
-            <div>
-              <div class="flex items-center justify-between gap-2">
-                <span
-                  class:list={[
-                    'rounded-full px-2.5 py-0.5 text-[11px] font-semibold',
-                    isPrimary && 'bg-primary/10 text-primary',
-                    isEmerald && 'bg-success/10 text-success',
-                    isCombined && 'bg-muted text-foreground',
-                  ]}
-                >
-                  {track.recommendedTool}
-                </span>
-                <span class="text-[11px] text-muted-foreground">{track.roles}</span>
-              </div>
+        <div
+          role="tablist"
+          aria-label="انتخاب نیاز مدرسه"
+          class="grid grid-cols-1 gap-2 rounded-2xl border border-border/80 bg-muted/60 p-1.5 sm:inline-flex sm:flex-wrap"
+        >
+          {tracks.map((track, index) => {
+            const isActive = index === 0;
+            const dotClass =
+              track.tone === 'primary'
+                ? 'bg-primary'
+                : track.tone === 'emerald'
+                  ? 'bg-success'
+                  : 'bg-foreground/70';
 
-              <h3 class="mt-3 text-base font-bold leading-snug text-foreground text-balance">
-                {track.title}
-              </h3>
-
-              <ul class="mt-3 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
-                {track.needs.map((need) => (
-                  <li class="flex items-start gap-2">
-                    <span
-                      class:list={[
-                        'mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full',
-                        isPrimary && 'bg-primary',
-                        isEmerald && 'bg-success',
-                        isCombined && 'bg-foreground/70',
-                      ]}
-                      aria-hidden="true"
-                    />
-                    <span>{need}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="mt-4 flex gap-2 border-t border-border pt-3.5">
-              <a
-                href={track.primaryCtaHref}
+            return (
+              <button
+                type="button"
+                role="tab"
+                id={`funnel-tab-${track.id}`}
+                aria-selected={isActive ? 'true' : 'false'}
+                aria-controls={`funnel-panel-${track.id}`}
+                tabindex={isActive ? 0 : -1}
+                data-funnel-tab
                 class:list={[
-                  'inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                  isEmerald ? 'bg-success' : 'bg-primary',
+                  'inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                  isActive
+                    ? 'bg-primary text-primary-foreground shadow-xs'
+                    : 'text-muted-foreground hover:bg-card/80 hover:text-foreground',
                 ]}
               >
-                <span>{track.primaryCtaLabel}</span>
-                <svg class="h-3.5 w-3.5 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+                <span
+                  data-funnel-dot
+                  class:list={[
+                    'h-2 w-2 shrink-0 rounded-full transition-colors',
+                    isActive ? 'bg-primary-foreground' : dotClass,
+                  ]}
+                  data-default-dot={dotClass}
+                  aria-hidden="true"
+                />
+                <span>{tabLabels[track.id]}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
-              {track.secondaryCtaHref && track.secondaryCtaLabel && (
-                <a
-                  href={track.secondaryCtaHref}
-                  class="inline-flex flex-1 items-center justify-center rounded-xl border border-border bg-background px-3.5 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  {track.secondaryCtaLabel}
-                </a>
-              )}
+      <div class="mt-6 border-t border-border/80 pt-6">
+        {tracks.map((track, index) => {
+          const isActive = index === 0;
+          const isPrimary = track.tone === 'primary';
+          const isEmerald = track.tone === 'emerald';
+          const isCombined = track.tone === 'combined';
+
+          return (
+            <div
+              role="tabpanel"
+              id={`funnel-panel-${track.id}`}
+              aria-labelledby={`funnel-tab-${track.id}`}
+              data-funnel-panel
+              hidden={!isActive}
+              class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center"
+            >
+              <div class="min-w-0 lg:col-span-6">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="text-xs font-medium text-muted-foreground">مسیر پیشنهادی:</span>
+                  <span
+                    class:list={[
+                      'rounded-full px-2.5 py-1 text-xs font-bold',
+                      isPrimary && 'bg-primary/10 text-primary',
+                      isEmerald && 'bg-success/10 text-success',
+                      isCombined && 'bg-muted text-foreground',
+                    ]}
+                  >
+                    {track.recommendedTool}
+                  </span>
+                </div>
+
+                <h3 class="mt-3 text-lg font-extrabold leading-snug text-foreground sm:text-xl text-balance">
+                  {track.title}
+                </h3>
+
+                <p class="mt-2 max-w-prose text-sm leading-[1.8] text-muted-foreground text-pretty">
+                  {track.summary}
+                </p>
+
+                <p class="mt-3 text-xs text-muted-foreground">
+                  مخاطبان: <span class="font-semibold text-foreground">{track.roles}</span>
+                </p>
+              </div>
+
+              <div class="flex flex-col justify-between rounded-2xl border border-border/80 bg-muted/40 p-4 sm:p-5 lg:col-span-6">
+                <ul class="space-y-2.5 text-xs leading-relaxed text-foreground/90 sm:text-sm">
+                  {track.needs.map((need) => (
+                    <li class="flex items-start gap-2.5">
+                      <svg
+                        class:list={[
+                          'mt-0.5 h-4 w-4 shrink-0',
+                          isEmerald ? 'text-success' : 'text-primary',
+                        ]}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span>{need}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="mt-5 flex flex-wrap gap-2.5 border-t border-border/75 pt-4">
+                  <a
+                    href={track.primaryCtaHref}
+                    class:list={[
+                      'inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm',
+                      isEmerald ? 'bg-success' : 'bg-primary',
+                    ]}
+                  >
+                    <span>{track.primaryCtaLabel}</span>
+                    <svg class="h-4 w-4 shrink-0 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+
+                  {track.secondaryCtaHref && track.secondaryCtaLabel && (
+                    <a
+                      href={track.secondaryCtaHref}
+                      class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-xs font-semibold text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
+                    >
+                      <span>{track.secondaryCtaLabel}</span>
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
-          </article>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
 
     <div class="mt-5 flex flex-col justify-between gap-3 rounded-2xl border border-dashed border-border bg-card/75 px-4 py-3 sm:flex-row sm:items-center">
@@ -124,3 +201,76 @@ const { eyebrow, title, subtitle, tracks } = SITE_CONFIG.decisionMatrix;
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function () {
+    function bindDecisionFunnels() {
+      document.querySelectorAll('[data-decision-funnel]').forEach(function (root) {
+        if (root.dataset.bound) return;
+        root.dataset.bound = '1';
+
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-funnel-tab]'));
+        var panels = Array.prototype.slice.call(root.querySelectorAll('[data-funnel-panel]'));
+
+        function activateTab(targetTab, focusTab) {
+          var targetPanelId = targetTab.getAttribute('aria-controls');
+
+          tabs.forEach(function (tab) {
+            var active = tab === targetTab;
+            tab.setAttribute('aria-selected', active ? 'true' : 'false');
+            tab.setAttribute('tabindex', active ? '0' : '-1');
+
+            tab.classList.toggle('bg-primary', active);
+            tab.classList.toggle('text-primary-foreground', active);
+            tab.classList.toggle('shadow-xs', active);
+            tab.classList.toggle('text-muted-foreground', !active);
+            tab.classList.toggle('hover:bg-card/80', !active);
+            tab.classList.toggle('hover:text-foreground', !active);
+
+            var dot = tab.querySelector('[data-funnel-dot]');
+            if (dot) {
+              var defaultDot = dot.getAttribute('data-default-dot') || 'bg-primary';
+              dot.classList.remove('bg-primary-foreground', 'bg-primary', 'bg-success', 'bg-foreground/70');
+              dot.classList.add(active ? 'bg-primary-foreground' : defaultDot);
+            }
+          });
+
+          panels.forEach(function (panel) {
+            panel.hidden = panel.id !== targetPanelId;
+          });
+
+          if (focusTab) {
+            targetTab.focus();
+          }
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener('click', function () {
+            activateTab(tab, false);
+          });
+
+          tab.addEventListener('keydown', function (event) {
+            var nextIndex = -1;
+            if (event.key === 'ArrowLeft') {
+              nextIndex = (index + 1) % tabs.length;
+            } else if (event.key === 'ArrowRight') {
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+            } else if (event.key === 'Home') {
+              nextIndex = 0;
+            } else if (event.key === 'End') {
+              nextIndex = tabs.length - 1;
+            }
+
+            if (nextIndex !== -1) {
+              event.preventDefault();
+              activateTab(tabs[nextIndex], true);
+            }
+          });
+        });
+      });
+    }
+
+    bindDecisionFunnels();
+    document.addEventListener('astro:after-swap', bindDecisionFunnels);
+  })();
+</script>
