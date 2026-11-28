@@ -3,10 +3,16 @@ import { SITE_CONFIG } from '../../data/site';
 import { PRODUCTS } from '../../data/products';
 import FaqAccordion from '../FaqAccordion.astro';
 
-const { eyebrow, title, pillars } = SITE_CONFIG.trustSection;
+const { eyebrow, title } = SITE_CONFIG.trustSection;
+
+const browsers = [
+  { name: 'Chrome', label: 'کروم' },
+  { name: 'Edge', label: 'اج' },
+  { name: 'Firefox', label: 'فایرفاکس' },
+] as const;
 ---
 
-<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-14">
+<section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
   <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
     <div>
       <span class="inline-flex items-center rounded-full border border-success/30 bg-success/10 px-3 py-1 text-xs font-semibold text-success">
@@ -28,48 +34,169 @@ const { eyebrow, title, pillars } = SITE_CONFIG.trustSection;
     </a>
   </div>
 
-  <div class="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    {pillars.map((pillar) => (
-      <article class="card-surface rounded-2xl border border-border bg-card p-4">
-        <div class="flex items-center gap-2.5">
-          <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            {pillar.id === 'privacy' && (
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            )}
-            {pillar.id === 'safety' && (
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="16" rx="2" />
-                <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            )}
-            {pillar.id === 'browsers' && (
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
-              </svg>
-            )}
-            {pillar.id === 'trial' && (
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            )}
-          </div>
-          <h3 class="text-sm font-bold text-foreground">{pillar.title}</h3>
-        </div>
-        <p class="mt-2.5 text-xs leading-[1.75] text-muted-foreground text-pretty">{pillar.description}</p>
-      </article>
-    ))}
-  </div>
+  {/* گرید بنتو نامتقارن ۴ کاشی‌ای (الهام از WorkOS Atlas و Dark Mode Bento) */}
+  <div class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-12">
+    {/* کاشی ۱: امنیت و پردازش محلی با قاب زمردی */}
+    <article class="card-surface group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-success/35 bg-card p-5 transition-colors hover:border-success/55 sm:p-6 lg:col-span-7">
+      <div
+        class="pointer-events-none absolute -top-20 end-0 -me-12 h-48 w-48 rounded-full bg-success/12 blur-3xl transition-opacity duration-300 group-hover:opacity-90"
+        aria-hidden="true"
+      />
 
-  <div
-    id="eitaa-hub"
-    class="card-surface scroll-mt-24 mt-8 rounded-3xl border border-border bg-card p-5 sm:p-7"
-  >
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center">
-      <div class="min-w-0 lg:col-span-7">
+      <div class="relative">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-xs font-semibold text-success">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>حفاظت از داده‌های مدرسه</span>
+          </span>
+          <span class="rounded-lg border border-border bg-muted/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+            کارکرد حتی در قطع اینترنت
+          </span>
+        </div>
+
+        <h3 class="mt-4 text-lg font-extrabold leading-snug text-foreground sm:text-xl text-balance">
+          اطلاعات دانش‌آموزان و رمز سیدا روی سیستم خودتان می‌ماند
+        </h3>
+        <p class="mt-1.5 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-sm text-pretty">
+          سیدا پلاس فقط روی تب باز سیدا اجرا می‌شود و پایگاه داده کارنامه پلاس روی رایانه مدرسه ذخیره می‌گردد.
+        </p>
+      </div>
+
+      {/* دیاگرام جریان امن ۳ گره‌ای (Show, Don't Tell) */}
+      <div class="relative mt-5 rounded-2xl border border-success/25 bg-muted/40 p-3.5 sm:p-4">
+        <div class="grid grid-cols-1 items-center gap-2.5 sm:grid-cols-11">
+          <div class="rounded-xl border border-border bg-card px-3 py-2.5 text-center sm:col-span-3">
+            <p class="text-[11px] font-bold text-foreground">مرورگر مدرسه</p>
+            <p class="mt-0.5 text-[10px] text-muted-foreground">صفحه باز سیدا</p>
+          </div>
+
+          <div class="flex justify-center sm:col-span-1" aria-hidden="true">
+            <svg class="h-4 w-4 rotate-90 text-success sm:rotate-0 rtl:sm:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <div class="rounded-xl border border-success/40 bg-success/10 px-3 py-2.5 text-center sm:col-span-3">
+            <p class="text-[11px] font-extrabold text-success">پردازش محلی ایمن</p>
+            <p class="mt-0.5 text-[10px] text-foreground/80">بدون ذخیره رمز عبور</p>
+          </div>
+
+          <div class="flex justify-center sm:col-span-1" aria-hidden="true">
+            <svg class="h-4 w-4 rotate-90 text-success sm:rotate-0 rtl:sm:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <div class="rounded-xl border border-border bg-card px-3 py-2.5 text-center sm:col-span-3">
+            <p class="text-[11px] font-bold text-foreground">حفظ کامل سوابق</p>
+            <p class="mt-0.5 text-[10px] text-muted-foreground">ذخیره آفلاین و امن</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    {/* کاشی ۲: تست ۱۰ روزه بدون ریسک با تایپوگرافی شاخص */}
+    <article class="card-surface group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 transition-colors hover:border-primary/45 sm:p-6 lg:col-span-5">
+      <div
+        class="pointer-events-none absolute -top-20 start-0 -ms-12 h-44 w-44 rounded-full bg-primary/12 blur-3xl transition-opacity duration-300 group-hover:opacity-90"
+        aria-hidden="true"
+      />
+
+      <div class="relative">
+        <span class="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+          آزمایش پیش از خرید
+        </span>
+
+        <div class="mt-4 flex flex-wrap items-baseline gap-2.5">
+          <span class="font-display text-4xl font-extrabold tracking-tight text-foreground tabular-nums sm:text-5xl">
+            ۱۰ روز
+          </span>
+          <span class="text-sm font-bold text-primary sm:text-base">
+            تست رایگان کامل
+          </span>
+        </div>
+
+        <p class="mt-2.5 text-xs leading-[1.8] text-muted-foreground sm:text-sm text-pretty">
+          بدون نیاز به کارت بانکی؛ پس از پایان دوره آزمایشی، داده‌های مدرسه حفظ می‌شوند و استعلام تعرفه در بله انجام می‌شود.
+        </p>
+      </div>
+
+      <div class="relative mt-5 space-y-2 border-t border-border/80 pt-4">
+        {PRODUCTS.map((product) => (
+          <a
+            href={product.baleBotUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between gap-2 rounded-xl border border-border bg-muted/45 px-3.5 py-2.5 text-xs transition-colors hover:border-primary/45 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <span class="font-semibold text-foreground">دریافت تست {product.name}</span>
+            <span class="inline-flex items-center gap-1.5 text-primary">
+              <span dir="ltr" class="inline-block font-mono text-[11px]">{product.baleBotHandle}</span>
+              <svg class="h-3.5 w-3.5 shrink-0 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path d="M7 17 17 7M7 7h10v10" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </article>
+
+    {/* کاشی ۳: سازگاری مرورگرها و راهنمای نصب */}
+    <article class="card-surface flex flex-col justify-between rounded-3xl border border-border bg-card p-5 transition-colors hover:border-primary/45 sm:p-6 lg:col-span-5">
+      <div>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/70 px-3 py-1 text-xs font-semibold text-foreground">
+          <svg class="h-3.5 w-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+          </svg>
+          <span>سازگاری مرورگرهای دسکتاپ</span>
+        </span>
+
+        <h3 class="mt-4 text-lg font-extrabold leading-snug text-foreground text-balance">
+          نصب سریع روی Chrome، Edge و Firefox
+        </h3>
+        <p class="mt-1.5 text-xs leading-[1.8] text-muted-foreground sm:text-sm text-pretty">
+          افزونه فقط روی سیستم دفتر مدرسه نصب می‌شود؛ دبیران، معاونین و اولیا با موبایل هم دسترسی دارند.
+        </p>
+      </div>
+
+      <div class="mt-5 space-y-3">
+        <div class="grid grid-cols-3 gap-2">
+          {browsers.map((browser) => (
+            <div class="flex flex-col items-center justify-center rounded-xl border border-border bg-muted/40 px-2 py-2.5 text-center">
+              <span dir="ltr" class="inline-block font-mono text-xs font-bold text-foreground">
+                {browser.name}
+              </span>
+              <span class="mt-0.5 text-[10px] text-muted-foreground">{browser.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <a
+          href="/guide"
+          class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-xs font-semibold text-foreground transition-colors hover:border-primary/45 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <span>راهنمای گام‌به‌گام نصب مرورگرها</span>
+          <svg class="h-3.5 w-3.5 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    {/* کاشی ۴: هاب آموزشی یکپارچه ایتا */}
+    <article
+      id="eitaa-hub"
+      class="card-surface scroll-mt-24 relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 transition-colors hover:border-primary/45 sm:p-6 lg:col-span-7"
+    >
+      <div
+        class="pointer-events-none absolute -bottom-20 end-0 -me-12 h-44 w-44 rounded-full bg-primary/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div class="relative">
         <div class="flex flex-wrap items-center gap-2">
           <span class="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
             هاب آموزشی یکپارچه ایتا
@@ -79,71 +206,42 @@ const { eyebrow, title, pillars } = SITE_CONFIG.trustSection;
           </span>
         </div>
 
-        <h3 class="mt-3 text-xl font-extrabold text-foreground text-balance">
+        <h3 class="mt-4 text-lg font-extrabold text-foreground sm:text-xl text-balance">
           {SITE_CONFIG.eitaaHub.name}
         </h3>
-        <p class="mt-1.5 max-w-prose text-sm leading-[1.8] text-muted-foreground text-pretty">
+        <p class="mt-1.5 max-w-prose text-xs leading-[1.8] text-muted-foreground sm:text-sm text-pretty">
           {SITE_CONFIG.eitaaHub.description}
         </p>
-
-        <div class="mt-4 flex flex-wrap items-center gap-3">
-          <a
-            href={SITE_CONFIG.eitaaHub.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
-          >
-            <span>عضویت در کانال ایتا</span>
-            <svg class="h-4 w-4 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-
-          {PRODUCTS.map((product) => (
-            <a
-              href={product.baleBotUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-3 py-2 text-xs font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <span>بله {product.name}</span>
-              <span dir="ltr" class="font-mono text-[11px] text-primary">{product.baleBotHandle}</span>
-            </a>
-          ))}
-        </div>
       </div>
 
-      <div class="min-w-0 lg:col-span-5">
-        <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+      <div class="relative mt-5 flex flex-col gap-3 border-t border-border/80 pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <a
+          href={SITE_CONFIG.eitaaHub.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm"
+        >
+          <span>عضویت در کانال رسمی ایتا</span>
+          <svg class="h-4 w-4 shrink-0 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <div class="flex flex-wrap items-center gap-2">
           {PRODUCTS.map((product) => (
             <a
               href={`/products/${product.slug}`}
-              class="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-muted/45 px-3.5 py-2.5 transition-colors hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              class="rounded-xl border border-border bg-muted/45 px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <div class="flex min-w-0 items-center gap-2">
-                <span dir="ltr" class="inline-block font-mono text-xs font-semibold text-primary">
-                  {product.eitaaProductHashtag}
-                </span>
-                <span class="truncate text-xs font-semibold text-foreground">{product.name}</span>
-              </div>
-              <span class="shrink-0 rounded-md bg-card px-2 py-0.5 text-[11px] font-medium text-muted-foreground tabular-nums">
-                نسخه {product.version}
-              </span>
+              <span dir="ltr" class="inline-block font-mono text-primary">{product.eitaaProductHashtag}</span>
             </a>
           ))}
-          <a
-            href="/guide"
-            class="flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-muted/45 px-3.5 py-2.5 transition-colors hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            <span class="text-xs font-semibold text-foreground">راهنمای نصب و حریم خصوصی</span>
-            <span class="shrink-0 text-[11px] font-medium text-primary">مشاهده</span>
-          </a>
         </div>
       </div>
-    </div>
+    </article>
   </div>
 
-  <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+  <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
     <div class="lg:col-span-4">
       <span class="text-xs font-semibold text-primary">پاسخ کوتاه و شفاف</span>
       <h3 class="mt-1.5 text-xl font-extrabold text-foreground sm:text-2xl text-balance">
