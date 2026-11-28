@@ -43,7 +43,7 @@
 - **گام ۱ (`6f8fcc0`):** `src/components/ThemeToggle.astro` و `src/components/FaqAccordion.astro` جایگزین نسخه‌های React شدند تا باندل `215 KB` React از `/` و `/guide/` حذف شود.
 - **گام ۲ (`9b29d89`):** `astro.config.mjs` (`inlineStylesheets: 'always'`) و جایگزینی `ClientRouter` با `@view-transition` بومی CSS (حذف فایل مسدودکننده CSS و اسکریپت روتر).
 - **گام ۳:** `public/_headers` با سیاست کش `stale-while-revalidate` برای صفحات HTML و `immutable` برای `/_astro/*`، همراه با ممیزی زنده دامنه اصلی.
-- **دامنه متصل‌شده:** `https://modir-plus.ir/` (و پیش‌نمایش `https://modir-plus.pages.dev/`).
+- **دامنه متصل‌شده:** `https://modir-plus.ir/` (دامنه رسمی و اصلی).
 
 ## ۵. نتایج بررسی‌ها، بیلد و ممیزی جامع (TASK-SEO-403)
 - `npm run verify`: اسکن ۶۲ فایل -> `PASS`
@@ -59,7 +59,7 @@
 - `npm run check:syntax`: ۲۳ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
 - `npm test`: `5 passed, 0 failed` -> `PASS`
 - `npm run build`: ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
-- **ممیزی زنده روی `https://modir-plus.pages.dev/products/sida-plus/` و `/products/karnameh-plus/`:**
+- **ممیزی زنده روی `https://modir-plus.ir/products/sida-plus/` و `/products/karnameh-plus/`:**
   - دریافت کد `200` بدون خطای کنسول و بدون اسکرول افقی در `1440px` و `375px`.
   - تایید عملکرد تب‌های سناریو (`WorkflowScenarioTabs`)، لایت‌باکس (`ProductLightboxGallery` با `ArrowLeft` و `Escape`)، تب مرورگرها و لینک‌های پورتال وب کارنامه پلاس، و آکاردئون `FaqAccordion`.
 
@@ -68,7 +68,7 @@
 - `npm run check:syntax`: ۱۶ فایل، `0 errors, 0 warnings, 0 hints` -> `PASS`
 - `npm test`: `5 passed, 0 failed` -> `PASS`
 - `npm run build`: ساخت ۴ صفحه استاتیک در `dist/` -> `PASS`
-- **ممیزی مرورگر روی `https://modir-plus.pages.dev/`:**
+- **ممیزی مرورگر روی `https://modir-plus.ir/`:**
   - دریافت کد `200` در مسیرهای `/`، `/products/sida-plus/`، `/products/karnameh-plus/` و `/guide/` بدون خطای کنسول و با لود فونت‌های `Estedad Variable` و `Vazirmatn Variable`.
   - تایید تغییر تم روشن/تیره، نبود اسکرول افقی در `1440px` و `375px` و بسته‌شدن صحیح منوی موبایل با کلیک روی پس‌زمینه.
 

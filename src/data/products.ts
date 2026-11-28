@@ -404,17 +404,17 @@ export const PRODUCTS: ProductDefinition[] = [
       {
         label: 'ورود به پورتال اولیا',
         role: 'والدین و دانش‌آموزان',
-        url: 'https://karnameh.medu-plus.workers.dev/parent/',
+        url: 'https://karnameh.modir-plus.ir/parent/',
       },
       {
         label: 'ورود به پورتال دبیران',
         role: 'ثبت نمرات بدون نصب افزونه',
-        url: 'https://karnameh.medu-plus.workers.dev/teacher/',
+        url: 'https://karnameh.modir-plus.ir/teacher/',
       },
       {
         label: 'ورود به پورتال معاونین',
         role: 'ثبت غیبت ۶ زنگی و انضباط با موبایل',
-        url: 'https://karnameh.medu-plus.workers.dev/deputy/',
+        url: 'https://karnameh.modir-plus.ir/deputy/',
       },
     ],
     faqs: [

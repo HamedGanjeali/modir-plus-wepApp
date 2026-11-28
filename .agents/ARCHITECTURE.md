@@ -30,7 +30,7 @@ flowchart TD
 
     SidaPage -->|شروع تست ۱۰ روزه و اشتراک| BaleSida["ربات بله سیدا پلاس (@sidayar_license_bot)"]
     KarnamehPage -->|شروع تست ۱۰ روزه و اشتراک| BaleKarnameh["ربات بله کارنامه پلاس (@Karnameh_plus_bot)"]
-    KarnamehPage -->|ورود دبیران / معاونین / اولیا| WebPortal["پورتال وب کارنامه پلاس (karnameh.medu-plus.workers.dev)"]
+    KarnamehPage -->|ورود دبیران / معاونین / اولیا| WebPortal["پورتال وب کارنامه پلاس (karnameh.modir-plus.ir)"]
     SidaPage -->|آموزش‌های لقمه‌ای و هشتگ‌ها| EitaaHub["کانال ایتای مدیر پلاس (#سیدا_پلاس)"]
     KarnamehPage -->|آموزش‌های لقمه‌ای و هشتگ‌ها| EitaaHub
 ```

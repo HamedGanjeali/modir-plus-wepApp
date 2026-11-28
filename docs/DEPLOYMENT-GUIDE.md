@@ -1,6 +1,6 @@
 # راهنمای نگهداری و استقرار مدیر پلاس (`modir-plus.ir`)
 
-این سند روش نگهداری داده‌ها، بررسی کیفیت، انتشار روی Cloudflare Pages (`modir-plus.pages.dev`) و اتصال دامنه اصلی `modir-plus.ir` را توضیح می‌دهد.
+این سند روش نگهداری داده‌ها، بررسی کیفیت و انتشار روی Cloudflare Pages و دامنه اصلی `modir-plus.ir` را توضیح می‌دهد.
 
 ---
 
@@ -28,7 +28,7 @@ npm run build
 npx wrangler pages deploy dist --project-name modir-plus --branch main
 ```
 
-- آدرس پیش‌فرض پیش‌نمایش آنلاین: `https://modir-plus.pages.dev/`
+- آدرس زنده رسمی: `https://modir-plus.ir/`
 - فایل `public/_headers` هدرهای امنیتی (`X-Frame-Options`، `X-Content-Type-Options`، `Referrer-Policy`) و کش `immutable` فایل‌های `_astro/*` را تنظیم می‌کند.
 
 ---

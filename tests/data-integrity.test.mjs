@@ -29,10 +29,10 @@ test('unified 10-day free trial policy with zero legacy 60-day claims or hardcod
   assert.doesNotMatch(productsSource + siteSource, /۶۰ روز|60 روز|تومان|ریال/i);
 });
 
-test('karnameh-plus includes real portal links on medu-plus.workers.dev', () => {
-  assert.match(productsSource, /https:\/\/karnameh\.medu-plus\.workers\.dev\/parent\//);
-  assert.match(productsSource, /https:\/\/karnameh\.medu-plus\.workers\.dev\/teacher\//);
-  assert.match(productsSource, /https:\/\/karnameh\.medu-plus\.workers\.dev\/deputy\//);
+test('karnameh-plus includes real portal links on modir-plus.ir', () => {
+  assert.match(productsSource, /https:\/\/karnameh\.modir-plus\.ir\/parent\//);
+  assert.match(productsSource, /https:\/\/karnameh\.modir-plus\.ir\/teacher\//);
+  assert.match(productsSource, /https:\/\/karnameh\.modir-plus\.ir\/deputy\//);
 });
 
 test('home landing decision matrix, trust pillars and FAQs are configured in site.ts', () => {
