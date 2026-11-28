@@ -61,20 +61,37 @@
   html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-feature-settings: "ss01";
+    font-feature-settings: "ss01" on, "cv01" on;
+    line-height: 1.75;
+    letter-spacing: 0;
     overflow-x: hidden;
   }
 
   h1,
   h2,
   h3,
+  h4,
+  h5,
+  h6,
   .font-display {
     font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  /* فارسی: جلوگیری از افتادگی یا تنگی حروف فارسی در کلاس‌های پیش‌فرض tracking */
+  .tracking-tight {
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    line-height: 1.85;
   }
 }
 
